@@ -15,8 +15,8 @@
         <TextView
 
             android:id="@+id/textview_recycler_subject"
-            android:layout_width="411dp"
-            android:layout_height="37dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
@@ -28,8 +28,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_recycler_content"
-            android:layout_width="408dp"
-            android:layout_height="252dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:scrollbars="horizontal" />
 
     </LinearLayout>
