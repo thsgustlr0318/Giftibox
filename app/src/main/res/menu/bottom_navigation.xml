@@ -4,25 +4,25 @@
     <item
         android:id="@+id/homeFrag"
         android:enabled="true"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Medium"/>
-
-    <item
-        android:id="@+id/mapFrag"
-        android:enabled="true"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Wasd"/>
+        android:icon="@drawable/baseline_inventory_2_24"
+        android:title="보관함"/>
 
     <item
         android:id="@+id/calendarFrag"
         android:enabled="true"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Android"/>
+        android:icon="@drawable/baseline_event_24"
+        android:title="달력"/>
+
+
+    <item
+        android:id="@+id/mapFrag"
+        android:enabled="true"
+        android:icon="@drawable/baseline_map_black_24"
+        android:title="지도"/>
 
     <item
         android:id="@+id/settingFrag"
         android:enabled="true"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Android"/>
-
+        android:icon="@drawable/baseline_settings_24"
+        android:title="설정"/>
 </menu>
