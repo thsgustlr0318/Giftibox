@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFrag">
+    <fragment
+        android:id="@+id/homeFrag"
+        android:name="com.triples.giftibox.HomeFrag"
+        android:label="frag_home"
+        tools:layout="@layout/frag_home" >
+        <action
+            android:id="@+id/action_homeFrag_to_mapFrag"
+            app:destination="@id/mapFrag" />
+        <action
+            android:id="@+id/action_homeFrag_to_settingFrag"
+            app:destination="@id/settingFrag" />
+        <action
+            android:id="@+id/action_homeFrag_to_calendarFrag"
+            app:destination="@id/calendarFrag" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFrag"
+        android:name="com.triples.giftibox.MapFrag"
+        android:label="frag_map"
+        tools:layout="@layout/frag_map" />
+    <fragment
+        android:id="@+id/settingFrag"
+        android:name="com.triples.giftibox.SettingFrag"
+        android:label="frag_setting"
+        tools:layout="@layout/frag_setting" />
+    <fragment
+        android:id="@+id/calendarFrag"
+        android:name="com.triples.giftibox.CalendarFrag"
+        android:label="frag_calendar"
+        tools:layout="@layout/frag_calendar" />
+</navigation>
