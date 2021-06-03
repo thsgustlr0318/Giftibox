@@ -39,7 +39,7 @@ class HomeFrag : Fragment() {
         val view = inflater.inflate(R.layout.frag_home, container, false)
         //  clickListener 설정
         view.findViewById<Button>(R.id.button).setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_homeFrag_to_mapFrag)
+            Navigation.findNavController(view).navigate(R.id.action_homeFrag_to_calendarFrag)
         }
         return view
     }
