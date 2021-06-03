@@ -2,19 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_medium"
+        android:id="@+id/homeFrag"
         android:enabled="true"
         android:icon="@drawable/ic_android_black_24dp"
         android:title="Medium"/>
 
     <item
-        android:id="@+id/action_wasd"
+        android:id="@+id/mapFrag"
         android:enabled="true"
         android:icon="@drawable/ic_android_black_24dp"
         android:title="Wasd"/>
 
     <item
-        android:id="@+id/action_android"
+        android:id="@+id/calendarFrag"
+        android:enabled="true"
+        android:icon="@drawable/ic_android_black_24dp"
+        android:title="Android"/>
+
+    <item
+        android:id="@+id/settingFrag"
         android:enabled="true"
         android:icon="@drawable/ic_android_black_24dp"
         android:title="Android"/>

@@ -37,10 +37,6 @@ class HomeFrag : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.frag_home, container, false)
-        //  clickListener 설정
-        view.findViewById<Button>(R.id.button).setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_homeFrag_to_calendarFrag)
-        }
         return view
     }
 

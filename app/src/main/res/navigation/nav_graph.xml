@@ -8,17 +8,7 @@
         android:id="@+id/homeFrag"
         android:name="com.triples.giftibox.HomeFrag"
         android:label="frag_home"
-        tools:layout="@layout/frag_home" >
-        <action
-            android:id="@+id/action_homeFrag_to_mapFrag"
-            app:destination="@id/mapFrag" />
-        <action
-            android:id="@+id/action_homeFrag_to_settingFrag"
-            app:destination="@id/settingFrag" />
-        <action
-            android:id="@+id/action_homeFrag_to_calendarFrag"
-            app:destination="@id/calendarFrag" />
-    </fragment>
+        tools:layout="@layout/frag_home" />
     <fragment
         android:id="@+id/mapFrag"
         android:name="com.triples.giftibox.MapFrag"
