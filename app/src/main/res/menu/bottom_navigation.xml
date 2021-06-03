@@ -4,19 +4,30 @@
     <item
         android:id="@+id/action_medium"
         android:enabled="true"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Medium"/>
+        android:icon="@drawable/baseline_inventory_2_24"
+        android:title="보관함"/>
 
     <item
-        android:id="@+id/action_wasd"
+        android:id="@+id/action_test"
         android:enabled="true"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Wasd"/>
+        android:icon="@drawable/baseline_event_24"
+        android:title="달력"/>
 
     <item
         android:id="@+id/action_android"
         android:enabled="true"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Android"/>
+        android:icon="@drawable/baseline_add_circle_outline_24"
+        android:title="쿠폰 추가"/>
 
+    <item
+        android:id="@+id/action_test1"
+        android:enabled="true"
+        android:icon="@drawable/baseline_map_black_24"
+        android:title="지도"/>
+
+    <item
+        android:id="@+id/action_test2"
+        android:enabled="true"
+        android:icon="@drawable/baseline_settings_24"
+        android:title="설정"/>
 </menu>
