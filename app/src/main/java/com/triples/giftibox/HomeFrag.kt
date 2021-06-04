@@ -1,12 +1,17 @@
 package com.triples.giftibox
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.ListView
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +27,7 @@ class HomeFrag : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var mainCouponAdapter: MainCouponAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +44,25 @@ class HomeFrag : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.frag_home, container, false)
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //var CouponList: ArrayList<MainCouponItem> = requireActivity().intent!!.extras!!.get("CouponList") as ArrayList<MainCouponItem>
+
+        var CouponList: ArrayList<MainCouponItem> = arrayListOf(
+            MainCouponItem("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BHC", "뿌링클", "2021.06.04"),
+            MainCouponItem("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BBQ", "맛초킹", "2021.06.05"),
+            MainCouponItem("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06")
+        )
+
+        Log.e("FirstFragment", "Data List: ${CouponList}")
+
+        mainCouponAdapter = MainCouponAdapter(CouponList)
+        var listView = requireView().findViewById(R.id.listView) as RecyclerView
+        listView.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+        listView.adapter = mainCouponAdapter
+
     }
 
     companion object {

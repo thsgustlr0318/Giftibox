@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/couponItemLayout"
+    android:layout_width="160dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/coupon_img"
+        android:layout_width="120dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/coupon_menu"
+        android:layout_width="103dp"
+        android:layout_height="29dp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:text="coupon_menu"
+        app:layout_constraintStart_toStartOf="@+id/coupon_img"
+        app:layout_constraintTop_toBottomOf="@+id/coupon_brand" />
+
+    <TextView
+        android:id="@+id/coupon_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="coupon_brand"
+        app:layout_constraintStart_toStartOf="@+id/coupon_img"
+        app:layout_constraintTop_toBottomOf="@+id/coupon_img" />
+
+    <TextView
+        android:id="@+id/coupon_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="coupon_date"
+        app:layout_constraintStart_toStartOf="@+id/coupon_img"
+        app:layout_constraintTop_toBottomOf="@+id/coupon_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
