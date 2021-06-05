@@ -1,7 +1,17 @@
-HI
-에이치 아이~
+# 🎁Toy Project - GiftiBox
 
-엄살
 
-요~ 매드 몬스터~
 
+## 📑Schedule
+
+#### [2021-06-01~2021-06-03]
+
+> UI 설계, Main Acticity, Navigation var 구현
+
+#### [2021-06-04]
+
+> So - Glide, RecyclerView로 쿠폰 이미지 구현 / internet 권한 설정
+>
+> Shin - 
+>
+> Son - 
