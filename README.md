@@ -1,7 +1,17 @@
-HI
-에이치 아이~
+# 🎁Toy Project - GiftiBox
 
-엄살
+주 4회 / 6시간
 
-요~ 매드 몬스터~
+## 📑Schedule
 
+#### [2021-06-01~2021-06-03]
+
+> UI 설계, Main Acticity, Navigation var 구현
+
+#### [2021-06-04]
+
+> Son -
+>
+> Shin - kakao map api를 이용한 지도 구현, map fragment UI 구현
+>
+> So - Glide, RecyclerView로 쿠폰 이미지 구현 / internet 권한 설정
