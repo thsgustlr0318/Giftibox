@@ -10,7 +10,7 @@
 
 #### [2021-06-04]
 
-> Son -
+> Son - Calendar Library 설정
 >
 > Shin - kakao map api를 이용한 지도 구현, map fragment UI 구현
 >
