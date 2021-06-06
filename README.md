@@ -14,4 +14,11 @@
 >
 > Shin - kakao map api를 이용한 지도 구현, map fragment UI 구현
 >
-> So - Glide, RecyclerView로 쿠폰 이미지 구현 / internet 권한 설정
+> So - Glide, RecyclerView로 쿠폰 이미지 구현 / internet 권한 설정 / TabLayout, Spinner로 Main UI 구현
+
+#### [2021-06-07]
+> Son -
+>
+> Shin -
+>
+> So - (예정) EventListener로 화면전환, layout설정, CardView 로 변경, 
