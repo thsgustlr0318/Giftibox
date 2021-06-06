@@ -6,9 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.ListView
+import android.widget.*
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +26,7 @@ class HomeFrag : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var mainCouponAdapter: MainCouponAdapter
+    private var spinnerCouponItem = arrayListOf("종류순","날짜순","이름순")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +47,14 @@ class HomeFrag : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // spinner coupon sort
+        var couponSortSpinner: Spinner = requireView().findViewById(R.id.spinner_coupon)
+
+        var mainCouponSpinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, spinnerCouponItem)
+        //mainCouponSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        couponSortSpinner.adapter = mainCouponSpinnerAdapter
+        // view coupon list
         //var CouponList: ArrayList<MainCouponItem> = requireActivity().intent!!.extras!!.get("CouponList") as ArrayList<MainCouponItem>
 
         var CouponList: ArrayList<MainCouponItem> = arrayListOf(

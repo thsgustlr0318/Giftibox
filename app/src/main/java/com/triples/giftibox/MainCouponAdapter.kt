@@ -21,7 +21,7 @@ class MainCouponAdapter(private var couponList: MutableList<MainCouponItem>): Re
             Log.d("ListAdapter", "===== ===== ===== ===== bind ===== ===== ===== =====")
             Log.d("ListAdapter", data.getCouponBrand()+" "+data.getCouponMenu()+" "+data.getCouponDate())
             //coupon_img.setImageResource(R.drawable.ic_launcher_foreground)
-            Glide.with(itemView).load(data.getCouponImg()).into(coupon_img)
+            Glide.with(itemView).load(data.getCouponImg()).centerCrop().into(coupon_img)
             coupon_brand.text = data.getCouponBrand()
             coupon_menu.text = data.getCouponMenu()
             coupon_date.text = data.getCouponDate()
