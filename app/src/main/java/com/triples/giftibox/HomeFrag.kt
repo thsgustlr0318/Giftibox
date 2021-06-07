@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -25,8 +24,8 @@ class HomeFrag : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var mainCouponAdapter: MainCouponAdapter
-    private var spinnerCouponItem = arrayListOf("종류순","날짜순","이름순")
+    private lateinit var recyclerCouponAdapter: RecyclerCouponAdapter
+    private var spinnerSortList = arrayListOf("종류순","날짜순","이름순")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,26 +48,26 @@ class HomeFrag : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // spinner coupon sort
-        var couponSortSpinner: Spinner = requireView().findViewById(R.id.spinner_coupon)
+        var spinnerHomeSort: Spinner = requireView().findViewById(R.id.spinner_home_sort)
 
-        var mainCouponSpinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, spinnerCouponItem)
+        var homeSortSpinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, spinnerSortList)
         //mainCouponSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        couponSortSpinner.adapter = mainCouponSpinnerAdapter
+        spinnerHomeSort.adapter = homeSortSpinnerAdapter
         // view coupon list
         //var CouponList: ArrayList<MainCouponItem> = requireActivity().intent!!.extras!!.get("CouponList") as ArrayList<MainCouponItem>
 
-        var CouponList: ArrayList<MainCouponItem> = arrayListOf(
-            MainCouponItem("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BHC", "뿌링클", "2021.06.04"),
-            MainCouponItem("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BBQ", "맛초킹", "2021.06.05"),
-            MainCouponItem("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06")
+        var couponList: ArrayList<Coupon> = arrayListOf(
+            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BHC", "뿌링클", "2021.06.04"),
+            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BBQ", "맛초킹", "2021.06.05"),
+            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06")
         )
 
-        Log.e("FirstFragment", "Data List: ${CouponList}")
+        Log.e("FirstFragment", "Data List: ${couponList}")
 
-        mainCouponAdapter = MainCouponAdapter(CouponList)
-        var listView = requireView().findViewById(R.id.listView) as RecyclerView
-        listView.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
-        listView.adapter = mainCouponAdapter
+        recyclerCouponAdapter = RecyclerCouponAdapter(couponList)
+        var listviewHomeCoupon = requireView().findViewById(R.id.listview_home_coupon) as RecyclerView
+        listviewHomeCoupon.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+        listviewHomeCoupon.adapter = recyclerCouponAdapter
 
     }
 

@@ -8,28 +8,28 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class MainCouponAdapter(private var couponList: MutableList<MainCouponItem>): RecyclerView.Adapter<MainCouponAdapter.ListItemViewHolder>() {
+class RecyclerCouponAdapter(private var couponList: MutableList<Coupon>): RecyclerView.Adapter<RecyclerCouponAdapter.ListItemViewHolder>() {
 
     inner class ListItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!){
 
-        var coupon_img: ImageView = itemView!!.findViewById(R.id.coupon_img)
-        var coupon_brand: TextView = itemView!!.findViewById(R.id.coupon_brand)
-        var coupon_menu: TextView = itemView!!.findViewById(R.id.coupon_menu)
-        var coupon_date: TextView = itemView!!.findViewById(R.id.coupon_date)
+        private var imageviewCardImg: ImageView = itemView!!.findViewById(R.id.imageview_card_img)
+        private var textviewCardBrand: TextView = itemView!!.findViewById(R.id.textview_card_brand)
+        private var textviewCardMenu: TextView = itemView!!.findViewById(R.id.textview_card_menu)
+        private var textviewCardDate: TextView = itemView!!.findViewById(R.id.textview_card_date)
 
-        fun bind(data: MainCouponItem, position: Int){
+        fun bind(data: Coupon, position: Int){
             Log.d("ListAdapter", "===== ===== ===== ===== bind ===== ===== ===== =====")
-            Log.d("ListAdapter", data.getCouponBrand()+" "+data.getCouponMenu()+" "+data.getCouponDate())
+            Log.d("ListAdapter", data.getBrand()+" "+data.getMenu()+" "+data.getDate())
             //coupon_img.setImageResource(R.drawable.ic_launcher_foreground)
-            Glide.with(itemView).load(data.getCouponImg()).centerCrop().into(coupon_img)
-            coupon_brand.text = data.getCouponBrand()
-            coupon_menu.text = data.getCouponMenu()
-            coupon_date.text = data.getCouponDate()
+            Glide.with(itemView).load(data.getImg()).centerCrop().into(imageviewCardImg)
+            textviewCardBrand.text = data.getBrand()
+            textviewCardMenu.text = data.getMenu()
+            textviewCardDate.text = data.getDate()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_main, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.cardview_home, parent, false)
         return ListItemViewHolder(view)
     }
 

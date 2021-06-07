@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.triples.giftibox.databinding.ActivityMainBinding
@@ -17,10 +16,10 @@ import java.security.NoSuchAlgorithmException
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    var CouponList: ArrayList<MainCouponItem> = arrayListOf(
-        MainCouponItem("test.png", "BHC", "뿌링클", "2021.06.04"),
-        MainCouponItem("test1.png", "BHC", "맛초킹", "2021.06.05"),
-        MainCouponItem("test2.png", "BHC", "커리치킨", "2021.06.06")
+    var couponList: ArrayList<Coupon> = arrayListOf(
+        Coupon("test.png", "BHC", "뿌링클", "2021.06.04"),
+        Coupon("test1.png", "BHC", "맛초킹", "2021.06.05"),
+        Coupon("test2.png", "BHC", "커리치킨", "2021.06.06")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
