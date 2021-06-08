@@ -1,8 +1,16 @@
-# 🎁Toy Project - GiftiBox
+# 🎁 Toy Project - GiftiBox
 
 주 4회 / 6시간
 
-## 📑Schedule
+## 🔨 Todo
+
+아키텍처 선정
+쿠폰 등록(바코드 스캔, api)
+DB 설계
+settings ui
+상단바
+
+## 📑 Schedule
 
 #### [2021-06-01~2021-06-03]
 
@@ -17,6 +25,11 @@
 > So - Glide, RecyclerView로 쿠폰 이미지 구현 / internet 권한 설정 / TabLayout, Spinner로 Main UI 구현
 
 #### [2021-06-07]
+
+> 네이밍 규칙 설정 및 변경
+
+#### [2021-06-08]
+
 > Son -
 >
 > Shin -
