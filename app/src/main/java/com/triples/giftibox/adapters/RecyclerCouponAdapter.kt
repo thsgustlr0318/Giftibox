@@ -1,4 +1,4 @@
-package com.triples.giftibox
+package com.triples.giftibox.adapters
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.triples.giftibox.R
+import com.triples.giftibox.data.Coupon
 
 class RecyclerCouponAdapter(private var couponList: MutableList<Coupon>): RecyclerView.Adapter<RecyclerCouponAdapter.ListItemViewHolder>() {
 

@@ -1,4 +1,4 @@
-package com.triples.giftibox
+package com.triples.giftibox.data
 
 class Coupon {
     private var img: String
