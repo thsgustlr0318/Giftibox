@@ -6,11 +6,11 @@ class Coupon {
     private var menu: String
     private var date: String
 
-    constructor(couponImg: String, couponBrand: String, couponMenu: String, couponDate: String){
-        this.img = couponImg
-        this.brand = couponBrand
-        this.menu = couponMenu
-        this.date = couponDate
+    constructor(img: String, brand: String, menu: String, date: String){
+        this.img = img
+        this.brand = brand
+        this.menu = menu
+        this.date = date
     }
 
     fun getImg(): String?{

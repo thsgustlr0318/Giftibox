@@ -10,19 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listview_home_coupon"
-            android:layout_width="408dp"
-            android:layout_height="252dp"
-            android:layout_marginStart="2dp"
-            android:scrollbars="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_home_subtitle"
-            app:layout_constraintVertical_bias="0.0" />
-
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout_home_isuse"
             android:layout_width="409dp"
@@ -55,24 +42,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tablayout_home_isuse" />
 
-        <TextView
-
-            android:id="@+id/textview_home_subtitle"
-            android:layout_width="411dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="8dp"
-
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:text="치킨"
-            android:textColor="#3E3E3E"
-            android:textSize="20sp"
-            android:textStyle="bold"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_home"
+            android:layout_width="409dp"
+            android:layout_height="647dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner_home_sort" />
+
         <!-- android:background="#F4F4F4" -->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
