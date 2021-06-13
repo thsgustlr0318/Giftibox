@@ -10,7 +10,9 @@ import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.triples.giftibox.adapters.RecyclerCouponAdapter
+import com.triples.giftibox.adapters.RecyclerHomeAdapter
 import com.triples.giftibox.data.Coupon
+import com.triples.giftibox.data.Home
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +28,8 @@ class HomeFrag : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var recyclerCouponAdapter: RecyclerCouponAdapter
+    //private lateinit var recyclerCouponAdapter: RecyclerCouponAdapter
+    private lateinit var recyclerHomeAdapter: RecyclerHomeAdapter
     private var spinnerSortList = arrayListOf("종류순","날짜순","이름순")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,13 +66,32 @@ class HomeFrag : Fragment() {
             Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BBQ", "맛초킹", "2021.06.05"),
             Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06")
         )
+        var cafecouponList: ArrayList<Coupon> = arrayListOf(
+            Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "스타벅스", "아메리카노", "2021.06.04"),
+            Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "투썸", "카페라떼", "2021.06.05"),
+            Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "이디야", "프라푸치노", "2021.06.06")
+        )
+
+        var pizacouponList: ArrayList<Coupon> = arrayListOf(
+            Coupon("https://cdn.dominos.co.kr/admin/upload/goods/20200311_x8StB1t3.jpg", "스타벅스", "아메리카노", "2021.06.04"),
+            Coupon("https://cdn.dominos.co.kr/admin/upload/goods/20200311_x8StB1t3.jpg", "투썸", "카페라떼", "2021.06.05"),
+            Coupon("https://cdn.dominos.co.kr/admin/upload/goods/20200311_x8StB1t3.jpg", "이디야", "프라푸치노", "2021.06.06")
+        )
+
+        var HomeList: ArrayList<Home> = arrayListOf(
+            Home("치킨", couponList),
+            Home("카페", cafecouponList),
+            Home("피자", pizacouponList)
+        )
 
         Log.e("FirstFragment", "Data List: ${couponList}")
 
-        recyclerCouponAdapter = RecyclerCouponAdapter(couponList)
-        var listviewHomeCoupon = requireView().findViewById(R.id.listview_home_coupon) as RecyclerView
-        listviewHomeCoupon.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
-        listviewHomeCoupon.adapter = recyclerCouponAdapter
+        //recyclerCouponAdapter = RecyclerCouponAdapter(couponList)
+
+        recyclerHomeAdapter = RecyclerHomeAdapter(HomeList)
+        var listviewHomeCoupon = requireView().findViewById(R.id.recyclerview_home) as RecyclerView
+        listviewHomeCoupon.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        listviewHomeCoupon.adapter = recyclerHomeAdapter
 
     }
 
