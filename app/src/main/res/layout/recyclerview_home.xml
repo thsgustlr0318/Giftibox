@@ -20,7 +20,7 @@
 
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:paddingLeft="20dp"
+            android:paddingLeft="15dp"
             android:text="치킨"
             android:textColor="#3E3E3E"
             android:textSize="20sp"
@@ -28,6 +28,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_recycler_content"
+            android:overScrollMode="never"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="horizontal" />
