@@ -1,10 +1,20 @@
 package com.triples.giftibox
 
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
+import com.triples.giftibox.decorator.EventDecorator
+import com.triples.giftibox.decorator.SaturdayDecorator
+import com.triples.giftibox.decorator.SundayDecorator
+import java.util.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,10 +26,13 @@ private const val ARG_PARAM2 = "param2"
  * Use the [CalendarFrag.newInstance] factory method to
  * create an instance of this fragment.
  */
-class CalendarFrag : Fragment() {
+class CalendarFrag : Fragment(), OnDateSelectedListener {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var widget: MaterialCalendarView
+    lateinit var textView: TextView
+    val calendarDayList: ArrayList<CalendarDay> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +47,21 @@ class CalendarFrag : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.frag_calendar, container, false)
+        val view = inflater.inflate(R.layout.frag_calendar, container, false)
+        widget = view.findViewById(R.id.calendarView)
+        textView = view.findViewById(R.id.textView)
+
+        calendarDayList.add(CalendarDay.today())
+        calendarDayList.add(CalendarDay.from(2021,6-1,12))
+        calendarDayList.add(CalendarDay.from(2021,6-1,13))
+        calendarDayList.add(CalendarDay.from(2021,0,13))
+
+        widget.setOnDateChangedListener(this);
+        widget.addDecorators(SaturdayDecorator(), SundayDecorator(), EventDecorator(Color.RED, calendarDayList, textView))
+
+        return view
     }
+
 
     companion object {
         /**
@@ -55,5 +81,17 @@ class CalendarFrag : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onDateSelected(
+        widget: MaterialCalendarView,
+        date: CalendarDay,
+        selected: Boolean
+    ) {
+        if(calendarDayList.contains(date)){
+            textView.text = "깊티 정보"
+        }else {
+            textView.text = ""
+        }
     }
 }
