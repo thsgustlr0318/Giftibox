@@ -28,10 +28,10 @@ settings ui
 
 > 네이밍 규칙 설정 및 변경
 
-#### [2021-06-08]
+#### [2021-06-14]
 
 > Son -
 >
 > Shin -
 >
-> So - (예정) EventListener로 화면전환, layout설정, CardView 로 변경, 
+> So - TabLayout, Spinner Listener 등록, CardView 변경, Coupon Activity 추가
