@@ -30,7 +30,7 @@ settings ui
 
 #### [2021-06-14]
 
-> Son -
+> Son - Calendar구현, 
 >
 > Shin -
 >
