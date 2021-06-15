@@ -26,7 +26,7 @@ settings ui
 
 #### [2021-06-07]
 
-> 네이밍 규칙 설정 및 변경
+> 네이밍 규칙, 아키텍처 설정 및 변경
 
 #### [2021-06-14]
 
@@ -35,3 +35,11 @@ settings ui
 > Shin -
 >
 > So - TabLayout, Spinner Listener 등록, CardView 변경, Coupon Activity 추가
+
+#### [2021-06-15]
+
+> Son - 
+>
+> Shin -
+>
+> So - Coupon Activity 수정 및 Intent로 데이터 전달
