@@ -30,7 +30,7 @@ settings ui
 
 #### [2021-06-14]
 
-> Son - Calendar구현, Calendar Lyayout 
+> Son - Calendar구현, Calendar Lyayout 설정
 >
 > Shin -
 >
