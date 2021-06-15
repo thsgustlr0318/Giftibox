@@ -15,6 +15,7 @@ import com.triples.giftibox.CouponActivity
 import com.triples.giftibox.MainActivity
 import com.triples.giftibox.R
 import com.triples.giftibox.data.Coupon
+import com.triples.giftibox.data.CouponParcel
 import kotlin.coroutines.coroutineContext
 
 class RecyclerCouponAdapter(private var couponList: MutableList<Coupon>): RecyclerView.Adapter<RecyclerCouponAdapter.ListItemViewHolder>() {
@@ -36,7 +37,10 @@ class RecyclerCouponAdapter(private var couponList: MutableList<Coupon>): Recycl
             textviewCardDate.text = data.getDate()
             itemView.setOnClickListener{
 
+                var couponData = CouponParcel(data.getMenu(), data.getImg(), "barcode", data.getBrand(),
+                data.getDate(), "치킨", "2021.06.15", "소연이가 사줌")
                 val nextIntent = Intent(itemView.context, CouponActivity::class.java)
+                nextIntent.putExtra("couponData", couponData)
                 itemView.context.startActivity(nextIntent)
 
                 //Toast.makeText(itemView.context, textviewCardMenu.text, Toast.LENGTH_SHORT).show()
