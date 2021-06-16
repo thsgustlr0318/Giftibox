@@ -2,11 +2,16 @@ package com.triples.giftibox
 
 import android.os.Bundle
 import android.util.Log
+import android.view.ContextThemeWrapper
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.triples.giftibox.data.CouponParcel
 import com.triples.giftibox.databinding.ActivityCouponBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 class CouponActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCouponBinding
@@ -16,6 +21,46 @@ class CouponActivity : AppCompatActivity() {
         Log.e("CouponActivity", "Create")
         initBinding()
         initData()
+        initActionBar()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_coupon_actionbar, menu)		//작성한 메뉴파일 설정
+        return true
+    }
+
+    private fun initActionBar(){
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.outline_delete_24)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.button_action_write -> { return writeCoupon() }
+            R.id.home -> { return deleteCoupon() }
+            else -> {return super.onOptionsItemSelected(item)}
+        }
+    }
+
+    private fun deleteCoupon(): Boolean{
+        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.Theme_AppCompat_Light_Dialog))
+        builder.setTitle("제목(kotlin)")
+        builder.setMessage("내용(Kotlin)")
+        builder.setPositiveButton("확인") { _, _ ->
+
+        }
+        builder.setNegativeButton("취소") { _, _ ->
+
+        }
+
+        builder.show()
+        return true
+    }
+
+    private fun writeCoupon(): Boolean{
+        return true
     }
 
     private fun initBinding(){

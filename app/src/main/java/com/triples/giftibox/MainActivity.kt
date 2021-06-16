@@ -6,11 +6,13 @@ import android.content.pm.Signature
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.triples.giftibox.data.Coupon
 import com.triples.giftibox.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -37,7 +39,21 @@ class MainActivity : AppCompatActivity() {
         */
         initBinding()
         getHashKey()
+        initActionBar()
         initNavigation()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_main_actionbar, menu)		//작성한 메뉴파일 설정
+        return true
+    }
+
+    private fun initActionBar(){
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.outline_notifications_24)
+        supportActionBar!!.setDisplayShowTitleEnabled(true)
+        supportActionBar!!.setTitle("GIFTIBOX")
     }
 
     private fun initNavigation(){
