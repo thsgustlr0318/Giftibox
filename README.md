@@ -26,12 +26,20 @@ settings ui
 
 #### [2021-06-07]
 
-> 네이밍 규칙 설정 및 변경
+> 네이밍 규칙, 아키텍처 설정 및 변경
 
 #### [2021-06-14]
 
 > Son - Calendar구현, Calendar Lyayout 설정
 >
+> Shin - Map Fragment에 RecyclerView로 쿠폰 리스트 표현
+>
+> So - EventListener로 화면전환, layout설정, CardView 로 변경, TabLayout, Spinner Listener 등록, CardView 변경, Coupon Activity 추가
+
+#### [2021-06-15]
+
+> Son - 
+>
 > Shin -
 >
-> So - TabLayout, Spinner Listener 등록, CardView 변경, Coupon Activity 추가
+> So - Coupon Activity 수정 및 Intent로 데이터 전달
