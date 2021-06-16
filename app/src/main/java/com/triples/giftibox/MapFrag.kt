@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.triples.giftibox.Util.RecyclerViewDecoration
 import com.triples.giftibox.adapters.RecyclerMapAdapter
 import com.triples.giftibox.data.Coupon
 import com.triples.giftibox.databinding.FragMapBinding
@@ -62,13 +63,19 @@ class MapFrag : Fragment() {
         var couponList: ArrayList<Coupon> = arrayListOf(
             Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BHC", "뿌링클", "2021.06.04"),
             Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BBQ", "맛초킹", "2021.06.05"),
+            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06"),
+            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06"),
+            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06"),
+            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06"),
+            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06"),
             Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06")
         )
         recyclerMapAdapter = RecyclerMapAdapter(couponList)
 
         recyclerView = _binding?.recyclerviewMap as RecyclerView // down castring을 적용
-        recyclerView!!.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, true)
+        recyclerView!!.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recyclerView!!.adapter = recyclerMapAdapter;
+        recyclerView!!.addItemDecoration(RecyclerViewDecoration(20))
     }
 
     override fun onDestroyView() {

@@ -32,6 +32,9 @@ class RecyclerMapAdapter(private val dataSet: ArrayList<Coupon>) : RecyclerView.
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 //        viewHolder.textView.text = dataSet[position]
 //        viewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground)
+//        val layoutParams = viewHolder.itemView.layoutParams
+//        layoutParams.height = 100
+
     }
 
     // 데이터 사이즈
