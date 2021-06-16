@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.tabs.TabLayout
 import com.triples.giftibox.adapters.RecyclerCouponAdapter
 import com.triples.giftibox.adapters.RecyclerHomeAdapter
 import com.triples.giftibox.data.Coupon
@@ -24,13 +25,24 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeFrag.newInstance] factory method to
  * create an instance of this fragment.
  */
+enum class SORT{
+    KIND, DATE, NAME
+}
+enum class USED{
+    FALSE, TRUE
+}
 class HomeFrag : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     //private lateinit var recyclerCouponAdapter: RecyclerCouponAdapter
     private lateinit var recyclerHomeAdapter: RecyclerHomeAdapter
+    private lateinit var tablayoutHomeIsuse: TabLayout;
+    private lateinit var listviewHomeCoupon: RecyclerView
+
     private var spinnerSortList = arrayListOf("종류순","날짜순","이름순")
+    private var sort: SORT = SORT.KIND
+    private var used: USED = USED.FALSE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,53 +58,123 @@ class HomeFrag : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.frag_home, container, false)
+        listviewHomeCoupon = view.findViewById(R.id.recyclerview_home)
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // spinner coupon sort
-        var spinnerHomeSort: Spinner = requireView().findViewById(R.id.spinner_home_sort)
+        recyclerHomeAdapter = RecyclerHomeAdapter(getCouponList(used))
+        listviewHomeCoupon.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        listviewHomeCoupon.adapter = recyclerHomeAdapter
 
+        // spinner coupon sort
+        var spinnerHomeSort: Spinner = view.findViewById(R.id.spinner_home_sort)
         var homeSortSpinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, spinnerSortList)
         //mainCouponSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerHomeSort.adapter = homeSortSpinnerAdapter
-        // view coupon list
-        //var CouponList: ArrayList<MainCouponItem> = requireActivity().intent!!.extras!!.get("CouponList") as ArrayList<MainCouponItem>
 
-        var couponList: ArrayList<Coupon> = arrayListOf(
+        spinnerHomeSort.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                sort = SORT.values()[position]
+                var HomeList: ArrayList<Home> = getCouponList(used)
+                recyclerHomeAdapter = RecyclerHomeAdapter(HomeList)
+                listviewHomeCoupon.adapter = recyclerHomeAdapter
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
+
+        tablayoutHomeIsuse = view.findViewById(R.id.tablayout_home_isuse)
+        tablayoutHomeIsuse.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabReselected(p0: TabLayout.Tab?) {}
+            override fun onTabUnselected(p0: TabLayout.Tab?) {}
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                used = USED.values()[tab.position]
+                var HomeList: ArrayList<Home> = getCouponList(used)
+                recyclerHomeAdapter = RecyclerHomeAdapter(HomeList)
+                listviewHomeCoupon.adapter = recyclerHomeAdapter
+            }
+        })
+
+        //recyclerCouponAdapter = RecyclerCouponAdapter(couponList)
+
+
+    }
+
+    fun getCouponList(used: USED): ArrayList<Home>{
+        var retList : ArrayList<Home> = ArrayList<Home>()
+        /* 대충 DB 연결하고 SELECT하는 과정 */
+        // 임시 data
+        var chickenCouponList: ArrayList<Coupon> = arrayListOf(
             Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BHC", "뿌링클", "2021.06.04"),
             Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BBQ", "맛초킹", "2021.06.05"),
             Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06")
         )
-        var cafecouponList: ArrayList<Coupon> = arrayListOf(
+        var cafeCouponList: ArrayList<Coupon> = arrayListOf(
             Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "스타벅스", "아메리카노", "2021.06.04"),
             Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "투썸", "카페라떼", "2021.06.05"),
             Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "이디야", "프라푸치노", "2021.06.06")
         )
 
-        var pizacouponList: ArrayList<Coupon> = arrayListOf(
+        var pizzaCouponList: ArrayList<Coupon> = arrayListOf(
             Coupon("https://cdn.dominos.co.kr/admin/upload/goods/20200311_x8StB1t3.jpg", "스타벅스", "아메리카노", "2021.06.04"),
             Coupon("https://cdn.dominos.co.kr/admin/upload/goods/20200311_x8StB1t3.jpg", "투썸", "카페라떼", "2021.06.05"),
             Coupon("https://cdn.dominos.co.kr/admin/upload/goods/20200311_x8StB1t3.jpg", "이디야", "프라푸치노", "2021.06.06")
         )
 
-        var HomeList: ArrayList<Home> = arrayListOf(
-            Home("치킨", couponList),
-            Home("카페", cafecouponList),
-            Home("피자", pizacouponList)
-        )
+        if( used == USED.FALSE){
+            if( sort == SORT.KIND ){
+                retList = arrayListOf(
+                    Home("카페", cafeCouponList),
+                    Home("치킨", chickenCouponList),
+                    Home("피자", pizzaCouponList)
+                )
+            }else if ( sort == SORT.DATE ){
+                retList = arrayListOf(
+                    Home("D-7", cafeCouponList),
+                    Home("D-14", chickenCouponList),
+                    Home("D-28", pizzaCouponList)
+                )
+            }else if( sort == SORT.NAME ){
+                retList = arrayListOf(
+                    Home("ㄱ", cafeCouponList),
+                    Home("ㄴ", chickenCouponList),
+                    Home("ㄷ", pizzaCouponList)
+                )
+            }
+        }else if( used == USED.TRUE ){
+            if( sort == SORT.KIND ){
+                retList = arrayListOf(
+                    Home("카페", pizzaCouponList),
+                    Home("치킨", chickenCouponList),
+                    Home("피자", cafeCouponList)
+                )
+            }else if ( sort == SORT.DATE ){
+                retList = arrayListOf(
+                    Home("D-7", pizzaCouponList),
+                    Home("D-14", chickenCouponList),
+                    Home("D-28", cafeCouponList)
+                )
+            }else if( sort == SORT.NAME ){
+                retList = arrayListOf(
+                    Home("ㄱ", pizzaCouponList),
+                    Home("ㄴ", chickenCouponList),
+                    Home("ㄷ", cafeCouponList)
+                )
+            }
+        }
 
-        Log.e("FirstFragment", "Data List: ${couponList}")
 
-        //recyclerCouponAdapter = RecyclerCouponAdapter(couponList)
-
-        recyclerHomeAdapter = RecyclerHomeAdapter(HomeList)
-        var listviewHomeCoupon = requireView().findViewById(R.id.recyclerview_home) as RecyclerView
-        listviewHomeCoupon.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        listviewHomeCoupon.adapter = recyclerHomeAdapter
-
+        return retList
     }
 
     companion object {

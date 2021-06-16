@@ -21,7 +21,7 @@ class RecyclerHomeAdapter(private var homeList: MutableList<Home>): RecyclerView
         private var recyclerviewRecyclerContent: RecyclerView = itemView!!.findViewById(R.id.recyclerview_recycler_content)
 
         fun bind(data: Home, position: Int){
-            Log.d("ListAdapter", "===== ===== ===== ===== bind ===== ===== ===== =====")
+            Log.d("RecyclerHomeAdapter", "===== ===== ===== ===== bind ===== ===== ===== =====")
             //coupon_img.setImageResource(R.drawable.ic_launcher_foreground)
 
             textviewRecyclerSubject.text = data.getSubject()
@@ -43,8 +43,7 @@ class RecyclerHomeAdapter(private var homeList: MutableList<Home>): RecyclerView
     }
 
     override fun onBindViewHolder(holder: RecyclerHomeAdapter.ListItemViewHolder, position: Int) {
-        Log.d("ListAdapter", "===== ===== ===== ===== onBindViewHolder ("+getItemCount()+")===== ===== ===== =====")
-
+        Log.d("RecyclerHomeAdapter", "===== ===== ===== ===== onBindViewHolder ("+getItemCount()+")===== ===== ===== =====")
         holder.bind(homeList[position], position)
     }
 }
