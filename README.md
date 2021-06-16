@@ -34,4 +34,6 @@ settings ui
 >
 > Shin -
 >
-> So - (예정) EventListener로 화면전환, layout설정, CardView 로 변경, 
+> So - (예정) EventListener로 화면전환, layout설정, CardView 로 변경,
+
+#### [2021-06-14]

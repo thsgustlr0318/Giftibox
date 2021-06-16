@@ -5,6 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.triples.giftibox.adapters.RecyclerMapAdapter
+import com.triples.giftibox.data.Coupon
+import com.triples.giftibox.databinding.FragMapBinding
 import net.daum.mf.map.api.MapView
 
 
@@ -23,6 +28,11 @@ class MapFrag : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var _binding: FragMapBinding? = null
+    private var recyclerView: RecyclerView? = null
+    private lateinit var recyclerMapAdapter : RecyclerMapAdapter
+
+    // fragment 생성
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -31,19 +41,39 @@ class MapFrag : Fragment() {
         }
     }
 
+    // fragment 생성 후 화면 구성
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.frag_map, container, false)
+        _binding = FragMapBinding.inflate(inflater, container, false);
+//        return inflater.inflate(R.layout.frag_map, container, false)
+        return _binding!!.root
     }
 
+    // onCreateView에서 뷰 초기화 시 제대로 초기화 안될 수 있음.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var mapView:MapView = MapView(activity)
         var mapViewContainer:ViewGroup = view.findViewById(R.id.map_view)
         mapViewContainer.addView(mapView)
+
+        var couponList: ArrayList<Coupon> = arrayListOf(
+            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BHC", "뿌링클", "2021.06.04"),
+            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BBQ", "맛초킹", "2021.06.05"),
+            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06")
+        )
+        recyclerMapAdapter = RecyclerMapAdapter(couponList)
+
+        recyclerView = _binding?.recyclerviewMap as RecyclerView // down castring을 적용
+        recyclerView!!.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, true)
+        recyclerView!!.adapter = recyclerMapAdapter;
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {
