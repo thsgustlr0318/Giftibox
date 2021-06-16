@@ -39,15 +39,15 @@ class CouponActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.button_action_write -> { return writeCoupon() }
-            R.id.home -> { return deleteCoupon() }
+            android.R.id.home -> { return deleteCoupon() }
             else -> {return super.onOptionsItemSelected(item)}
         }
     }
 
     private fun deleteCoupon(): Boolean{
-        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.Theme_AppCompat_Light_Dialog))
-        builder.setTitle("제목(kotlin)")
-        builder.setMessage("내용(Kotlin)")
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("쿠폰 삭제")
+        builder.setMessage("쿠폰을 정말 삭제하시겠습니까?")
         builder.setPositiveButton("확인") { _, _ ->
 
         }
