@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.triples.giftibox.Util.RecyclerViewDecoration
@@ -30,8 +31,7 @@ class MapFrag : Fragment() {
     private var param2: String? = null
 
     private var _binding: FragMapBinding? = null
-    private var recyclerView: RecyclerView? = null
-    private lateinit var recyclerMapAdapter : RecyclerMapAdapter
+    private var dataSet: ArrayList<Coupon>? = null
 
     // fragment 생성
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,23 +59,30 @@ class MapFrag : Fragment() {
         var mapView:MapView = MapView(activity)
         var mapViewContainer:ViewGroup = view.findViewById(R.id.map_view)
         mapViewContainer.addView(mapView)
+        dataSet = arrayListOf();
+        addDate()
 
-        var couponList: ArrayList<Coupon> = arrayListOf(
-            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BHC", "뿌링클", "2021.06.04"),
-            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "BBQ", "맛초킹", "2021.06.05"),
-            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06"),
-            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06"),
-            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06"),
-            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06"),
-            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06"),
-            Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "교촌", "커리치킨", "2021.06.06")
-        )
-        recyclerMapAdapter = RecyclerMapAdapter(couponList)
-
-        recyclerView = _binding?.recyclerviewMap as RecyclerView // down castring을 적용
+        val recyclerView = _binding?.recyclerviewMap as RecyclerView // down castring을 적용
         recyclerView!!.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recyclerView!!.adapter = recyclerMapAdapter;
-        recyclerView!!.addItemDecoration(RecyclerViewDecoration(20))
+        recyclerView!!.adapter = RecyclerMapAdapter(dataSet!!, { coupon ->
+            _binding!!.textViewInfoTitle.text = "제목 : ${coupon.getMenu()}";
+            _binding!!.textViewInfoStore.text = "사용처 : ${coupon.getBrand()}";
+            _binding!!.textViewInfoValidity.text = "유효기간 : ${coupon.getDate()}";
+        })
+    //        recyclerView!!.addItemDecoration(RecyclerViewDecoration(20))
+    }
+
+    private fun addDate(){
+        dataSet?.addAll(arrayListOf(
+            Coupon("https://img.bbq.co.kr:449/uploads/bbq_d/thumbnail/20200717_BBQ_%EC%95%B1_%EC%8D%B8%EB%84%A4%EC%9D%BC(%ED%95%AB%ED%99%A9%EA%B8%88%EC%98%AC%EB%A6%AC%EB%B8%8C-%EB%8B%A8%ED%92%88%EB%A5%98)_%EB%A0%88%EB%93%9C%EC%B0%A9%EC%B0%A9.png", "BHC", "뿌링클", "2021.06.04"),
+            Coupon("https://img.bbq.co.kr:449/uploads/bbq_d/thumbnail/20200717_BBQ_%EC%95%B1_%EC%8D%B8%EB%84%A4%EC%9D%BC(%ED%95%AB%ED%99%A9%EA%B8%88%EC%98%AC%EB%A6%AC%EB%B8%8C-%EB%8B%A8%ED%92%88%EB%A5%98)_%EB%B8%94%EB%9E%99%ED%8E%98%ED%8D%BC.png", "BBQ", "맛초킹", "2021.06.05"),
+            Coupon("https://img.bbq.co.kr:449/uploads/bbq_d/thumbnail/2021413_BBQ_%EC%95%B1_%EC%8D%B8%EB%84%A4%EC%9D%BC(480x480)_%ED%9B%84%EB%9D%BC%EC%9D%B4%EB%93%9C%EB%A5%98_%EC%88%9C%EC%82%B4%ED%81%AC%EB%9E%98%EC%BB%A4_%EC%88%98%EC%A0%95.png", "교촌", "커리치킨", "2021.06.06"),
+            Coupon("https://img.bbq.co.kr:449/uploads/bbq_d/thumbnail/20200717_BBQ_%EC%95%B1_%EC%8D%B8%EB%84%A4%EC%9D%BC(%ED%95%AB%ED%99%A9%EA%B8%88%EC%98%AC%EB%A6%AC%EB%B8%8C-%EB%8B%A8%ED%92%88%EB%A5%98)_%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%94%BC.png", "교촌", "커리치킨", "2021.06.06"),
+            Coupon("https://img.bbq.co.kr:449/uploads/bbq_d/thumbnail/202007017_BBQ_%EC%95%B1_%EC%8D%B8%EB%84%A4%EC%9D%BC(%ED%9B%84%EB%9D%BC%EC%9D%B4%EB%93%9C%EB%A5%98)_%ED%95%AB%EC%9C%99.png", "교촌", "커리치킨", "2021.06.06"),
+            Coupon("https://img.bbq.co.kr:449/uploads/bbq_d/thumbnail/20210413_BBQ_%EC%95%B1_%EC%8D%B8%EB%84%A4%EC%9D%BC(480x480)_%ED%9B%84%EB%9D%BC%EC%9D%B4%EB%93%9C%EB%A5%98_%ED%99%A9%EA%B8%88%EC%98%AC%EB%A6%AC%EB%B8%8C%EC%B9%98%ED%82%A8%EC%86%8D%EC%95%88%EC%8B%AC_%EC%88%98%EC%A0%95.png", "교촌", "커리치킨", "2021.06.06"),
+            Coupon("https://img.bbq.co.kr:449/uploads/bbq_d/thumbnail/20210413_BBQ_%EC%95%B1_%EC%8D%B8%EB%84%A4%EC%9D%BC(480x480)_%EC%96%91%EB%85%90%EB%A5%98_%ED%99%A9%EA%B8%88%EC%98%AC%EB%A6%AC%EB%B8%8C%EC%B9%98%ED%82%A8%EB%B0%98%EB%B0%98_%EC%88%98%EC%A0%95.png", "교촌", "커리치킨", "2021.06.06"),
+            Coupon("https://img.bbq.co.kr:449/uploads/bbq_d/thumbnail/BBQ_앱_썸네일(480x480)_후라이드류_황금올리브치킨_수정_out.png", "교촌", "커리치킨", "2021.06.06")
+        ))
     }
 
     override fun onDestroyView() {

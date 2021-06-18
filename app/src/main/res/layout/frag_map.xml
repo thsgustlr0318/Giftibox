@@ -20,11 +20,33 @@
         android:clipToPadding="false"
         android:overScrollMode="never"/>
 
-    <TextView
-        android:id="@+id/textView2"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"/>
-
+        android:layout_margin="8dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+            <TextView
+                android:id="@+id/textView_info_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제목 : "
+                android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/textView_info_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사용처 : "/>
+            <TextView
+                android:id="@+id/textView_info_validity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="유효기간 : "/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
