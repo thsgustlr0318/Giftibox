@@ -109,12 +109,12 @@ class CalendarFrag : Fragment(), OnDateSelectedListener {
             var couponList: ArrayList<Coupon> = arrayListOf(
                 Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "스타벅스", "아메리카노", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
                 Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "투썸", "카페라떼", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
-                Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "맛있는치킨집", "맛있는치킨", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
-                Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "맛있는치킨집맛있는치킨집", "맛있는치킨맛있는치킨", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
-                Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "맛있는치킨집맛있는치킨집맛있는치킨집", "맛있는치킨맛있는치킨맛있는치킨", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
-                Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "BHC", "뿌링클", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
-                Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "BHC", "뿌링클순살", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
-                Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "BHC", "맛초킹", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
+                Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "맛있는치킨집", "맛있는치킨", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
+                Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "맛있는치킨집맛있는치킨집", "맛있는치킨맛있는치킨", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
+                Coupon("https://pelicana.co.kr/resources/images/menu/best_menu02_200824.jpg", "맛있는치킨집맛있는치킨집맛있는치킨집", "맛있는치킨맛있는치킨맛있는치킨", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
+                Coupon("https://lh3.googleusercontent.com/proxy/w6hPXbO-foQazmouW90IaKppOPFc0G6VfWIdBhJIkDvQLjYoHSxJveRkJwozf-nAcX943nd4g8wXO_BKG04qudOVL76y2iY3gnDcP8V-O6G2ESDFcUM", "BHC", "뿌링클", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
+                Coupon("https://lh3.googleusercontent.com/proxy/w6hPXbO-foQazmouW90IaKppOPFc0G6VfWIdBhJIkDvQLjYoHSxJveRkJwozf-nAcX943nd4g8wXO_BKG04qudOVL76y2iY3gnDcP8V-O6G2ESDFcUM", "BHC", "뿌링클순살", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
+                Coupon("https://lh3.googleusercontent.com/proxy/w6hPXbO-foQazmouW90IaKppOPFc0G6VfWIdBhJIkDvQLjYoHSxJveRkJwozf-nAcX943nd4g8wXO_BKG04qudOVL76y2iY3gnDcP8V-O6G2ESDFcUM", "BHC", "맛초킹", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString()),
                 Coupon("https://img4.yna.co.kr/etc/inner/KR/2019/06/03/AKR20190603122400009_01_i_P2.jpg", "이디야", "프라푸치노", date.year.toString()+"."+(date.month+1).toString()+"."+date.day.toString())
             )
             getRecycler(couponList)
