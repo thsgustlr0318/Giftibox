@@ -14,6 +14,8 @@ import com.triples.giftibox.adapters.RecyclerCouponAdapter
 import com.triples.giftibox.adapters.RecyclerHomeAdapter
 import com.triples.giftibox.data.Coupon
 import com.triples.giftibox.data.Home
+import com.triples.giftibox.databinding.FragHomeBinding
+import com.triples.giftibox.databinding.FragMapBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,12 +37,21 @@ class HomeFrag : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    //private lateinit var recyclerCouponAdapter: RecyclerCouponAdapter
-    private lateinit var recyclerHomeAdapter: RecyclerHomeAdapter
-    private lateinit var tablayoutHomeIsuse: TabLayout;
-    private lateinit var listviewHomeCoupon: RecyclerView
 
+    private var _binding: FragHomeBinding? = null
+
+    // adapter
+    private lateinit var recyclerHomeAdapter: RecyclerHomeAdapter
+
+    // view
+    private lateinit var tablayoutHomeIsuse: TabLayout
+    private lateinit var listviewHomeCoupon: RecyclerView
+    private lateinit var spinnerHomeSort: Spinner
+
+    // variables
     private var spinnerSortList = arrayListOf("종류순","날짜순","이름순")
+
+    // enum variable
     private var sort: SORT = SORT.KIND
     private var used: USED = USED.FALSE
 
@@ -57,24 +68,29 @@ class HomeFrag : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.frag_home, container, false)
-        listviewHomeCoupon = view.findViewById(R.id.recyclerview_home)
-        return view
+        _binding = FragHomeBinding.inflate(inflater, container, false);
+        return _binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initRecyclerView()
+        initSpinner()
+        initTabLayout()
+
+    }
+
+    private fun initRecyclerView(){
+        listviewHomeCoupon = _binding!!.recyclerviewHome
         recyclerHomeAdapter = RecyclerHomeAdapter(getCouponList(used))
         listviewHomeCoupon.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         listviewHomeCoupon.adapter = recyclerHomeAdapter
+    }
 
-        // spinner coupon sort
-        var spinnerHomeSort: Spinner = view.findViewById(R.id.spinner_home_sort)
-        var homeSortSpinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, spinnerSortList)
-        //mainCouponSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerHomeSort.adapter = homeSortSpinnerAdapter
-
+    private fun initSpinner(){
+        spinnerHomeSort = _binding!!.spinnerHomeSort
+        spinnerHomeSort.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, spinnerSortList)
         spinnerHomeSort.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -92,8 +108,10 @@ class HomeFrag : Fragment() {
 
             }
         }
+    }
 
-        tablayoutHomeIsuse = view.findViewById(R.id.tablayout_home_isuse)
+    private fun initTabLayout(){
+        tablayoutHomeIsuse = _binding!!.tablayoutHomeIsuse
         tablayoutHomeIsuse.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabReselected(p0: TabLayout.Tab?) {}
             override fun onTabUnselected(p0: TabLayout.Tab?) {}
@@ -104,13 +122,9 @@ class HomeFrag : Fragment() {
                 listviewHomeCoupon.adapter = recyclerHomeAdapter
             }
         })
-
-        //recyclerCouponAdapter = RecyclerCouponAdapter(couponList)
-
-
     }
 
-    fun getCouponList(used: USED): ArrayList<Home>{
+    private fun getCouponList(used: USED): ArrayList<Home>{
         var retList : ArrayList<Home> = ArrayList<Home>()
         /* 대충 DB 연결하고 SELECT하는 과정 */
         // 임시 data
@@ -175,6 +189,11 @@ class HomeFrag : Fragment() {
 
 
         return retList
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {

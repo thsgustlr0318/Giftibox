@@ -25,7 +25,7 @@ class CouponActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_coupon_actionbar, menu)		//작성한 메뉴파일 설정
+        menuInflater.inflate(R.menu.top_coupon_actionbar, menu)
         return true
     }
 
@@ -72,12 +72,12 @@ class CouponActivity : AppCompatActivity() {
         if( intent.hasExtra("couponData") ){
             var coupon = intent.getParcelableExtra<CouponParcel>("couponData")
             binding.textviewCouponMenu.text = coupon!!.menu
-            binding.textviewCouponBrand.text = coupon!!.brand
-            binding.textviewCouponCategory.text = coupon!!.category
-            binding.textviewCouponDate.text = coupon!!.date
-            binding.textviewCouponRegister.text = coupon!!.register
-            binding.textviewCouponMemo.text = coupon!!.memo
-            Glide.with(this).load(coupon!!.img).centerCrop().into(binding.imageviewCouponImg)
+            binding.textviewCouponBrand.text = coupon.brand
+            binding.textviewCouponCategory.text = coupon.category
+            binding.textviewCouponDate.text = coupon.date
+            binding.textviewCouponRegister.text = coupon.register
+            binding.textviewCouponMemo.text = coupon.memo
+            Glide.with(this).load(coupon.img).centerCrop().into(binding.imageviewCouponImg)
             Glide.with(this).load("https://internationalbarcodes.com/wp-content/uploads/sites/95/2013/11/SSCC-Pallet-Barcode.jpg").centerCrop().into(binding.imageviewCouponBarcode)
 
         }

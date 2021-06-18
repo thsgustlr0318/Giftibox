@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -54,6 +55,14 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.outline_notifications_24)
         supportActionBar!!.setDisplayShowTitleEnabled(true)
         supportActionBar!!.setTitle("GIFTIBOX")
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.button_action_search -> { return true }
+            android.R.id.home -> { return true }
+            else -> {return super.onOptionsItemSelected(item)}
+        }
     }
 
     private fun initNavigation(){
