@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
     private fun viewAlarm(): Boolean{
         val nextIntent = Intent(this, AlarmActivity::class.java)
         this.startActivity(nextIntent)
+        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
         return true
     }
 

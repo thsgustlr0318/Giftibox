@@ -22,7 +22,7 @@ class Coupon {
     }
 
     fun getBrand(): String?{
-        return brand;
+        return brand
     }
 
     fun setBrand(brand: String){
@@ -30,7 +30,7 @@ class Coupon {
     }
 
     fun getMenu(): String?{
-        return menu;
+        return menu
     }
 
     fun setMenu(menu: String){
@@ -38,7 +38,7 @@ class Coupon {
     }
 
     fun getDate(): String?{
-        return date;
+        return date
     }
 
     fun setDate(date: String){
