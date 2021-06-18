@@ -14,7 +14,7 @@
         card_view:cardElevation="5dp">
 
         <ImageView
-            android:id="@+id/imageViewMap"
+            android:id="@+id/imageView_map"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:srcCompat="@tools:sample/avatars" />
