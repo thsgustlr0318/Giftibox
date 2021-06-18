@@ -1,5 +1,6 @@
 package com.triples.giftibox
 
+import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.Signature
@@ -60,9 +61,15 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.button_action_search -> { return true }
-            android.R.id.home -> { return true }
+            android.R.id.home -> { return viewAlarm() }
             else -> {return super.onOptionsItemSelected(item)}
         }
+    }
+
+    private fun viewAlarm(): Boolean{
+        val nextIntent = Intent(this, AlarmActivity::class.java)
+        this.startActivity(nextIntent)
+        return true
     }
 
     private fun initNavigation(){

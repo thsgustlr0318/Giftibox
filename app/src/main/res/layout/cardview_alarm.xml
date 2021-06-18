@@ -32,19 +32,19 @@
             android:paddingBottom="10dp">
 
             <TextView
-                android:id="@+id/textview_alarm_coupon"
+                android:id="@+id/textview_alarm_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="textview_alarm_coupon"
+                android:text="textview_alarm_title"
                 android:textColor="#5E5D5D"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textview_alarm_date"
+                android:id="@+id/textview_alarm_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="textview_alarm_date"
+                android:text="textview_alarm_content"
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
