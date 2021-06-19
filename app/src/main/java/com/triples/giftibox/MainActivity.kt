@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.Signature
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
@@ -77,6 +78,7 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.bottomNav, findNavController(R.id.navi_host))
         binding.bottomNav.background = null
         binding.bottomNav.menu.getItem(2).isEnabled = false
+        binding.fab.setColorFilter(Color.parseColor("#ffffffff"))
     }
 
     private fun initBinding(){
