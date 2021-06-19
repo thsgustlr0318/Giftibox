@@ -13,6 +13,9 @@
         android:icon="@drawable/baseline_event_24"
         android:title="달력"/>
 
+    <item
+        android:id="@+id/placeholder"
+        android:title="" />
 
     <item
         android:id="@+id/mapFrag"

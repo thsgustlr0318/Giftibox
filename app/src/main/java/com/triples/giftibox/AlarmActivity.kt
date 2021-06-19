@@ -71,8 +71,10 @@ class AlarmActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed(){
-        finish()
-        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left)
+        super.onBackPressed()
+        if( isFinishing ) {
+            overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left)
+        }
     }
 
     private fun initBinding(){

@@ -75,6 +75,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initNavigation(){
         NavigationUI.setupWithNavController(binding.bottomNav, findNavController(R.id.navi_host))
+        binding.bottomNav.background = null
+        binding.bottomNav.menu.getItem(2).isEnabled = false
     }
 
     private fun initBinding(){
