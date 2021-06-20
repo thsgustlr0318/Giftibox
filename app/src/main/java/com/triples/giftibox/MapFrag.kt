@@ -1,6 +1,7 @@
 package com.triples.giftibox
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,6 +33,7 @@ class MapFrag : Fragment() {
 
     private var _binding: FragMapBinding? = null
     private var dataSet: ArrayList<Coupon>? = null
+    private var mapView: MapView? = null
 
     // fragment 생성
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,8 +58,9 @@ class MapFrag : Fragment() {
     // onCreateView에서 뷰 초기화 시 제대로 초기화 안될 수 있음.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var mapView:MapView = MapView(activity)
-        var mapViewContainer:ViewGroup = view.findViewById(R.id.map_view)
+        Log.d("MapFrag : ", "onViewCreated")
+        mapView = MapView(activity)
+        var mapViewContainer:ViewGroup = _binding!!.mapView // ? 널일수 있다. !!은 널이 아니다.
         mapViewContainer.addView(mapView)
         dataSet = arrayListOf();
         addDate()
@@ -87,7 +90,26 @@ class MapFrag : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        Log.d("MapFrag : ", "DestroyView")
         _binding = null
+    }
+
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("MapFrag : ", "onStop")
+        // navigation bar에서 동일 tab 클릭 시 map view가 이미 생성되어 있어, 에러 발생함. 그래서 stop했을 때 제거해야한다.
+        _binding?.mapView?.removeView(mapView)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("MapFrag : ", "onPause")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("MapFrag : ", "onStart")
     }
 
     companion object {
