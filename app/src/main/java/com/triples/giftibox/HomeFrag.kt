@@ -68,6 +68,7 @@ class HomeFrag : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        Log.d("HomeFrag","create")
         _binding = FragHomeBinding.inflate(inflater, container, false);
         return _binding!!.root
     }

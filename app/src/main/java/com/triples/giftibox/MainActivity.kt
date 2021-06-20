@@ -1,8 +1,10 @@
 package com.triples.giftibox
 
+import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.Signature
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
@@ -60,13 +62,23 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.button_action_search -> { return true }
-            android.R.id.home -> { return true }
+            android.R.id.home -> { return viewAlarm() }
             else -> {return super.onOptionsItemSelected(item)}
         }
     }
 
+    private fun viewAlarm(): Boolean{
+        val nextIntent = Intent(this, AlarmActivity::class.java)
+        this.startActivity(nextIntent)
+        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
+        return true
+    }
+
     private fun initNavigation(){
         NavigationUI.setupWithNavController(binding.bottomNav, findNavController(R.id.navi_host))
+        binding.bottomNav.background = null
+        binding.bottomNav.menu.getItem(2).isEnabled = false
+        binding.fab.setColorFilter(Color.parseColor("#ffffffff"))
     }
 
     private fun initBinding(){
