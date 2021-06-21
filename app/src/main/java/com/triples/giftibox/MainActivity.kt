@@ -61,10 +61,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.button_action_search -> { return true }
+            R.id.button_action_search -> { return viewSearch() }
             android.R.id.home -> { return viewAlarm() }
             else -> {return super.onOptionsItemSelected(item)}
         }
+    }
+
+    private fun viewSearch(): Boolean{
+        val nextIntent = Intent(this, SearchActivity::class.java)
+        this.startActivity(nextIntent)
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left)
+        return true
     }
 
     private fun viewAlarm(): Boolean{
