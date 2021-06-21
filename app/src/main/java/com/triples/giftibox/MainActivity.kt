@@ -6,11 +6,15 @@ import android.content.pm.PackageManager
 import android.content.pm.Signature
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import android.Manifest
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.triples.giftibox.data.Coupon
@@ -21,6 +25,9 @@ import java.security.NoSuchAlgorithmException
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    private val MAIN_REQUEST_CODE = 100
+    private val MAIN_CAMERA_REQUEST_CODE = 0
 
     var couponList: ArrayList<Coupon> = arrayListOf(
         Coupon("test.png", "BHC", "뿌링클", "2021.06.04"),
@@ -85,7 +92,13 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.bottomNav, findNavController(R.id.navi_host))
         binding.bottomNav.background = null
         binding.bottomNav.menu.getItem(2).isEnabled = false
+
         binding.fab.setColorFilter(Color.parseColor("#ffffffff"))
+        fab.setOnClickListener{
+            Log.d("MainActivity","Click fab")
+            Toast.makeText(this, "click fab", Toast.LENGTH_SHORT).show()
+            selectGallery()
+        }
     }
 
     private fun initBinding(){
@@ -116,6 +129,24 @@ class MainActivity : AppCompatActivity() {
                     Log.e("KeyHash", "Unable to get MessageDigest. signature=" + signature, e);
                 }
             }
+        }
+    }
+
+    private fun selectGallery() {
+
+        var writePermission = ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        var readPermission = ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+
+        if (writePermission == PackageManager.PERMISSION_DENIED || readPermission == PackageManager.PERMISSION_DENIED) {
+            // 권한 없어서 요청
+
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE), MAIN_CAMERA_REQUEST_CODE)
+        } else {
+            // 권한 있음
+            var intent = Intent(Intent.ACTION_PICK)
+            intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            intent.type = "image/*"
+            startActivityForResult(intent, MAIN_REQUEST_CODE)
         }
     }
 }
