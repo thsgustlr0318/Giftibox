@@ -73,7 +73,9 @@ class CalendarFrag : Fragment(), OnDateSelectedListener {
         calendarDayList.add(CalendarDay.from(2021,0,13))
 
         widget.setOnDateChangedListener(this);
-        widget.addDecorators(SaturdayDecorator(), SundayDecorator(), EventDecorator(Color.RED, calendarDayList))
+        if (container != null) {
+            widget.addDecorators(SaturdayDecorator(), SundayDecorator(), EventDecorator(Color.RED, calendarDayList, container.getContext()))
+        }
 
         return view
     }
