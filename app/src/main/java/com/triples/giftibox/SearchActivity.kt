@@ -157,16 +157,20 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener  {
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        recyclerSearchAdapter = RecyclerSearchAdapter(getCouponList())
         recyclerSearchAdapter!!.filter.filter(query)
+//        recyclerSearchAdapter = RecyclerSearchAdapter(getCouponList())
+
+        recyclerSearchAdapter.notifyDataSetChanged()
         Log.d("SearchActivity", "query: " + query)
-        return false
+        return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        recyclerSearchAdapter = RecyclerSearchAdapter(getCouponList())
         recyclerSearchAdapter!!.filter.filter(newText)
+//        recyclerSearchAdapter = RecyclerSearchAdapter(getCouponList())
+
+        recyclerSearchAdapter.notifyDataSetChanged()
         Log.d("SearchActivity", "query: " + newText)
-        return false
+        return true
     }
 }

@@ -20,7 +20,7 @@ import java.util.ArrayList
 
 class RecyclerSearchAdapter(private var couponList: ArrayList<Coupon>): RecyclerView.Adapter<RecyclerSearchAdapter.ListItemViewHolder>(), Filterable  {
 
-    private var searchCouponList: ArrayList<Coupon> = ArrayList()
+    private var searchCouponList: ArrayList<Coupon> = couponList
     inner class ListItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!){
 
         private var imageviewCardImg: ImageView = itemView!!.findViewById(R.id.imageview_search_img)
@@ -61,12 +61,12 @@ class RecyclerSearchAdapter(private var couponList: ArrayList<Coupon>): Recycler
     }
 
     override fun getItemCount(): Int {
-        return couponList.count()
+        return searchCouponList.count()
     }
 
     override fun onBindViewHolder(holder: ListItemViewHolder, position: Int) {
         Log.d("RecyclerSearchAdapter", "===== ===== ===== ===== onBindViewHolder ("+getItemCount()+")===== ===== ===== =====")
-        holder.bind(couponList[position], position)
+        holder.bind(searchCouponList[position], position)
     }
 
     override fun getFilter(): Filter {
@@ -74,14 +74,15 @@ class RecyclerSearchAdapter(private var couponList: ArrayList<Coupon>): Recycler
             override fun performFiltering(charSequence: CharSequence): FilterResults {
                 val charString = charSequence.toString()
                 if (charString.isEmpty()) {
+                    Log.d("RecyclerSearchAdapter", "empty query")
                     searchCouponList = couponList
                 } else {
                     val filteredList = ArrayList<Coupon>()
                     //이부분에서 원하는 데이터를 검색할 수 있음
                     for (row in couponList) {
-                        if (row.getMenu()!!.toLowerCase()
-                                .contains(charString.toLowerCase()) || row.getBrand()!!
-                                .toLowerCase().contains(charString.toLowerCase())
+                        if (row.getMenu()!!.lowercase()
+                                .contains(charString.lowercase()) || row.getBrand()!!
+                                .lowercase().contains(charString.lowercase())
                         ) {
                             filteredList.add(row)
                         }
@@ -91,13 +92,19 @@ class RecyclerSearchAdapter(private var couponList: ArrayList<Coupon>): Recycler
                 }
                 val filterResults = FilterResults()
                 filterResults.values = searchCouponList
-                for(row in searchCouponList){
-                    Log.d("RecyclerSearchAdapter", "메뉴: " + row.getMenu().toString())
-                }
                 return filterResults
             }
             override fun publishResults(charSequence: CharSequence, filterResults: FilterResults) {
-                searchCouponList = filterResults.values as ArrayList<Coupon>
+                if(filterResults.values == null){
+                    Log.d("RecyclerSearchAdapter", "empty array")
+                    searchCouponList = ArrayList()
+                }else {
+                    Log.d("RecyclerSearchAdapter", "not empty query")
+                    searchCouponList = filterResults.values as ArrayList<Coupon>
+                }
+                for(row in searchCouponList){
+                    Log.d("RecyclerSearchAdapter", "publishResults/ 메뉴: " + row.getMenu().toString())
+                }
                 notifyDataSetChanged()
             }
         }
