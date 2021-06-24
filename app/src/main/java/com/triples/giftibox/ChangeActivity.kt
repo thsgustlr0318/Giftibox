@@ -6,16 +6,12 @@ import android.text.Editable
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.view.View.OnFocusChangeListener
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.triples.giftibox.data.CouponParcel
 import com.triples.giftibox.databinding.ActivityChangeBinding
-import kotlinx.android.synthetic.main.activity_change.view.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.StringBuilder
 import java.util.*
@@ -31,14 +27,14 @@ class ChangeActivity : AppCompatActivity(){
         initBinding()
         initData()
         initActionBar()
-        initDatePicker()
+        initClickListener()
     }
 
-    private fun initDatePicker() {
+    private fun initClickListener() {
         var datePickerView = findViewById<EditText>(R.id.edittext_change_date)
         var categoryView = findViewById<EditText>(R.id.edittext_change_category)
         datePickerView.setOnClickListener {
-            showDataPicker()
+            showDatePicker()
         }
         categoryView.setOnClickListener {
             showCategoryList()
@@ -61,7 +57,7 @@ class ChangeActivity : AppCompatActivity(){
             .show()
     }
 
-    private fun showDataPicker() {
+    private fun showDatePicker() {
         val cal = Calendar.getInstance()
         DatePickerDialog(this, DatePickerDialog.OnDateSetListener { datePicker, y, m, d->
             binding.edittextChangeDate.text = Editable.Factory.getInstance().newEditable(getDateFromYMD(y, m, d))
