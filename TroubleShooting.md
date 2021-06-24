@@ -29,8 +29,10 @@ kakao map api는 http 통신을 통해서 제공하기 때문에 해당 에러�
 
 network_security_config.xml 파일을 통해서 특정 http 통신에 대해 예외처리 해야합니다. [참조 링크](https://developer.android.com/training/articles/security-config?hl=ko)
 
+---
 
-#### Android OS 9 Pie버전부터 http 사용시 네트워크 에러
+#### uri to path API deprecated 문제
+
 ##### ❓Problem
 android 에서 미디어 파일이 변경될 가능성이 있는 경우, 실제 파일 주소를 반환하지 않고 MediaScanner를 작동시킴
 이 파일은 MediaStore에 저장되고, content 스키마를 통해 표현
