@@ -13,13 +13,31 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import android.Manifest
+import android.app.Activity
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.BitmapFactory.decodeFileDescriptor
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
+import android.os.ParcelFileDescriptor
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.google.zxing.LuminanceSource
+import com.google.zxing.RGBLuminanceSource
+import com.google.zxing.MultiFormatReader
+import com.google.zxing.common.HybridBinarizer
+import com.google.zxing.BinaryBitmap
 import com.triples.giftibox.data.Coupon
 import com.triples.giftibox.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.FileDescriptor
+import java.io.IOException
+import java.io.InputStream
+import java.lang.Exception
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -28,6 +46,30 @@ class MainActivity : AppCompatActivity() {
 
     private val MAIN_REQUEST_CODE = 100
     private val MAIN_CAMERA_REQUEST_CODE = 0
+
+    @Throws(IOException::class)
+    private fun getBitmapFromUri(uri: Uri): Bitmap {
+        val parcelFileDescriptor: ParcelFileDescriptor? =
+            contentResolver.openFileDescriptor(uri, "r")
+        val fileDescriptor: FileDescriptor = parcelFileDescriptor!!.fileDescriptor
+        val image: Bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
+        parcelFileDescriptor!!.close()
+        return image
+    }
+
+    val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+
+       var bmap: Bitmap =  getBitmapFromUri(uri!!)
+        val width = bmap.width
+        val height = bmap.height
+        val pixels = IntArray(width * height)
+        bmap.getPixels(pixels, 0, width, 0, 0, width, height)
+        var source: LuminanceSource = RGBLuminanceSource(width, height, pixels)
+        val binaryBitmap = BinaryBitmap(HybridBinarizer(source))
+        var result = MultiFormatReader().decode(binaryBitmap)?.text
+        Log.d("MainActivity", result.toString())
+
+    }
 
     var couponList: ArrayList<Coupon> = arrayListOf(
         Coupon("test.png", "BHC", "뿌링클", "2021.06.04"),
@@ -131,15 +173,10 @@ class MainActivity : AppCompatActivity() {
         var readPermission = ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)
 
         if (writePermission == PackageManager.PERMISSION_DENIED || readPermission == PackageManager.PERMISSION_DENIED) {
-            // 권한 없어서 요청
-
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE), MAIN_CAMERA_REQUEST_CODE)
         } else {
-            // 권한 있음
-            var intent = Intent(Intent.ACTION_PICK)
-            intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-            intent.type = "image/*"
-            startActivityForResult(intent, MAIN_REQUEST_CODE)
+            getContent.launch("image/*")
         }
     }
+
 }

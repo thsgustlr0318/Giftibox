@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "918263427570",
+    "project_id": "gifticon-4445e",
+    "storage_bucket": "gifticon-4445e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918263427570:android:e6a8872373aa4d579abb6b",
+        "android_client_info": {
+          "package_name": "com.triples.giftibox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "918263427570-e1i4se2obem2d93rlffl3eqs75c7jrsf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbzIAdr4DRtn93ySN3yM0R-DoKDm9q9VM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "918263427570-e1i4se2obem2d93rlffl3eqs75c7jrsf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
