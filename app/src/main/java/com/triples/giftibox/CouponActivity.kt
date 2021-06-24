@@ -1,5 +1,6 @@
 package com.triples.giftibox
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.ContextThemeWrapper
@@ -60,6 +61,11 @@ class CouponActivity : AppCompatActivity() {
     }
 
     private fun writeCoupon(): Boolean{
+        Log.d("CouponActivity", "수정시작")
+        val nextIntent = Intent(this, ChangeActivity::class.java)
+        var coupon = intent.getParcelableExtra<CouponParcel>("couponData")
+        nextIntent.putExtra("couponData", coupon)
+        this.startActivity(nextIntent)
         return true
     }
 
