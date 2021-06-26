@@ -27,17 +27,15 @@ class RecyclerCalendarAdapter(private var couponList: MutableList<Coupon>): Recy
         private var textviewCardDate: TextView = itemView!!.findViewById(R.id.textview_calendar_date)
 
         fun bind(data: Coupon, position: Int){
-            Log.d("RecyclerCalendarAdapter", "===== ===== ===== ===== bind ===== ===== ===== =====")
-            Log.d("RecyclerCalendarAdapter", data.getBrand()+" "+data.getMenu()+" "+data.getDate())
             //coupon_img.setImageResource(R.drawable.ic_launcher_foreground)
-            Glide.with(itemView).load(data.getImg()).centerCrop().into(imageviewCardImg)
-            textviewCardBrand.text = data.getBrand()
-            textviewCardMenu.text = data.getMenu()
-            textviewCardDate.text = data.getDate()
+            Glide.with(itemView).load(data.img).centerCrop().into(imageviewCardImg)
+            textviewCardBrand.text = data.brand
+            textviewCardMenu.text = data.menu
+            textviewCardDate.text = data.date
             itemView.setOnClickListener{
 
-                var couponData = CouponParcel(data.getMenu(), data.getImg(), "barcode", data.getBrand(),
-                    data.getDate(), "치킨", "2021.06.15", "소연이가 사줌")
+                var couponData = CouponParcel(data.menu, data.img, "barcode", data.brand,
+                    data.date, "치킨", "2021.06.15", "소연이가 사줌")
                 val nextIntent = Intent(itemView.context, CouponActivity::class.java)
                 nextIntent.putExtra("couponData", couponData)
                 itemView.context.startActivity(nextIntent)

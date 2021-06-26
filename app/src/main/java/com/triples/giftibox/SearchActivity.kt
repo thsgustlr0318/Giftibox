@@ -147,11 +147,11 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener  {
     private fun getCouponList(): ArrayList<Coupon>{
         if(sort==SEARCH_SORT.DATE) {
             Log.d("SearchActivity", "Sort By Date")
-            allCouponList.sortWith(compareBy({ it.getDate() }, { it.getDate() }))
+            allCouponList.sortWith(compareBy({ it.date }, { it.date }))
         }
         else if(sort == SEARCH_SORT.NAME) {
             Log.d("SearchActivity", "Sort By Name")
-            allCouponList.sortWith(compareBy({ it.getMenu() }, { it.getDate() }))
+            allCouponList.sortWith(compareBy({ it.menu }, { it.menu }))
         }
         return allCouponList
     }

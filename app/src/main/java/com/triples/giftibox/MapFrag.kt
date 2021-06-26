@@ -68,9 +68,9 @@ class MapFrag : Fragment() {
         val recyclerView = _binding?.recyclerviewMap as RecyclerView // down castring을 적용
         recyclerView!!.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         recyclerView!!.adapter = RecyclerMapAdapter(dataSet!!, { coupon ->
-            _binding!!.textViewInfoTitle.text = "제목 : ${coupon.getMenu()}";
-            _binding!!.textViewInfoStore.text = "사용처 : ${coupon.getBrand()}";
-            _binding!!.textViewInfoValidity.text = "유효기간 : ${coupon.getDate()}";
+            _binding!!.textViewInfoTitle.text = "제목 : ${coupon.menu}";
+            _binding!!.textViewInfoStore.text = "사용처 : ${coupon.brand}";
+            _binding!!.textViewInfoValidity.text = "유효기간 : ${coupon.date}";
         })
     //        recyclerView!!.addItemDecoration(RecyclerViewDecoration(20))
     }

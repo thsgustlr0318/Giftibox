@@ -30,16 +30,16 @@ class RecyclerSearchAdapter(private var couponList: ArrayList<Coupon>): Recycler
 
         fun bind(data: Coupon, position: Int){
             Log.d("RecyclerSearchAdapter", "===== ===== ===== ===== bind ===== ===== ===== =====")
-            Log.d("RecyclerSearcgAdapter", data.getBrand()+" "+data.getMenu()+" "+data.getDate())
+            Log.d("RecyclerSearcgAdapter", data.brand+" "+data.menu+" "+data.date)
             //coupon_img.setImageResource(R.drawable.ic_launcher_foreground)
-            Glide.with(itemView).load(data.getImg()).centerCrop().into(imageviewCardImg)
-            textviewCardBrand.text = data.getBrand()
-            textviewCardMenu.text = data.getMenu()
-            textviewCardDate.text = data.getDate()
+            Glide.with(itemView).load(data.img).centerCrop().into(imageviewCardImg)
+            textviewCardBrand.text = data.brand
+            textviewCardMenu.text = data.menu
+            textviewCardDate.text = data.date
             itemView.setOnClickListener{
 
-                var couponData = CouponParcel(data.getMenu(), data.getImg(), "barcode", data.getBrand(),
-                    data.getDate(), "치킨", "2021.06.15", "소연이가 사줌")
+                var couponData = CouponParcel(data.menu, data.img, "barcode", data.brand,
+                    data.date, "치킨", "2021.06.15", "소연이가 사줌")
                 val nextIntent = Intent(itemView.context, CouponActivity::class.java)
                 nextIntent.putExtra("couponData", couponData)
                 itemView.context.startActivity(nextIntent)
@@ -80,8 +80,8 @@ class RecyclerSearchAdapter(private var couponList: ArrayList<Coupon>): Recycler
                     val filteredList = ArrayList<Coupon>()
                     //이부분에서 원하는 데이터를 검색할 수 있음
                     for (row in couponList) {
-                        if (row.getMenu()!!.lowercase()
-                                .contains(charString.lowercase()) || row.getBrand()!!
+                        if (row.menu!!.lowercase()
+                                .contains(charString.lowercase()) || row.brand!!
                                 .lowercase().contains(charString.lowercase())
                         ) {
                             filteredList.add(row)
@@ -103,7 +103,7 @@ class RecyclerSearchAdapter(private var couponList: ArrayList<Coupon>): Recycler
                     searchCouponList = filterResults.values as ArrayList<Coupon>
                 }
                 for(row in searchCouponList){
-                    Log.d("RecyclerSearchAdapter", "publishResults/ 메뉴: " + row.getMenu().toString())
+                    Log.d("RecyclerSearchAdapter", "publishResults/ 메뉴: " + row.menu.toString())
                 }
                 notifyDataSetChanged()
             }

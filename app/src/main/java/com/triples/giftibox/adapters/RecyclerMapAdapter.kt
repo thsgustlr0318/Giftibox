@@ -41,7 +41,7 @@ class RecyclerMapAdapter(private val dataSet: ArrayList<Coupon>, val itemClick: 
 
         fun binding(coupon: Coupon) {
             Glide.with(imageView.context)
-                .load(coupon.getImg())
+                .load(coupon.img)
                 .into(imageView)
             imageView.setOnClickListener({
                 itemClick(coupon)

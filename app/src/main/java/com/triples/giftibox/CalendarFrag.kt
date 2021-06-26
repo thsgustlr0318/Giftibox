@@ -65,7 +65,7 @@ class CalendarFrag : Fragment(), OnDateSelectedListener {
 
         // Set CalendarDay Set
         for(curCoupon in allCouponList){
-            addCalendarDaySet(curCoupon.getDate())
+            addCalendarDaySet(curCoupon.date)
         }
     }
 
@@ -115,7 +115,7 @@ class CalendarFrag : Fragment(), OnDateSelectedListener {
             var couponList: ArrayList<Coupon> = ArrayList()
             for(curCoupon in allCouponList){
 //                Log.d("CalendarFrag", curCoupon.getDate().toString() + "//"+getDateFromCalendarDay(date))
-                if(curCoupon.getDate().equals(getDateFromCalendarDay(date))){
+                if(curCoupon.date.equals(getDateFromCalendarDay(date))){
                     couponList.add(curCoupon)
                 }
             }
