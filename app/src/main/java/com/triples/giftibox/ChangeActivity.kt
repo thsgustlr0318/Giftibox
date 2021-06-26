@@ -90,27 +90,17 @@ class ChangeActivity : AppCompatActivity(){
         supportActionBar!!.setDisplayShowTitleEnabled(true)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean{
         when(item.itemId){
-            R.id.button_action_write -> { return writeCoupon() }
-            android.R.id.home -> { return deleteCoupon() }
-            else -> {return super.onOptionsItemSelected(item)}
+            R.id.button_action_write -> { writeCoupon() }
+            android.R.id.home -> { onBackPressed() }
+            else -> { super.onOptionsItemSelected(item)}
         }
+        return true
     }
 
-    private fun deleteCoupon(): Boolean{
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("쿠폰 삭제")
-        builder.setMessage("쿠폰을 정말 삭제하시겠습니까?")
-        builder.setPositiveButton("확인") { _, _ ->
-
-        }
-        builder.setNegativeButton("취소") { _, _ ->
-
-        }
-
-        builder.show()
-        return true
+    override fun onBackPressed(){
+        super.onBackPressed()
     }
 
     private fun writeCoupon(): Boolean{
