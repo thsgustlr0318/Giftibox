@@ -32,6 +32,7 @@ import com.google.zxing.MultiFormatReader
 import com.google.zxing.common.HybridBinarizer
 import com.google.zxing.BinaryBitmap
 import com.triples.giftibox.data.Coupon
+import com.triples.giftibox.data.FullCoupon
 import com.triples.giftibox.databinding.ActivityMainBinding
 import java.io.FileDescriptor
 import java.io.IOException
@@ -56,17 +57,21 @@ class MainActivity : AppCompatActivity() {
         return image
     }
 
-    val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+    private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
 
-       var bmap: Bitmap =  getBitmapFromUri(uri!!)
+        var bmap: Bitmap = getBitmapFromUri(uri!!)
         val width = bmap.width
         val height = bmap.height
         val pixels = IntArray(width * height)
         bmap.getPixels(pixels, 0, width, 0, 0, width, height)
         var source: LuminanceSource = RGBLuminanceSource(width, height, pixels)
         val binaryBitmap = BinaryBitmap(HybridBinarizer(source))
-        var result = MultiFormatReader().decode(binaryBitmap)?.text
+        var result = MultiFormatReader().decode(binaryBitmap)?.text.toString()
         Log.d("MainActivity", result.toString())
+
+        val addIntent: Intent = Intent(this, CouponAddActivity::class.java)
+        intent.putExtra("couponData", FullCoupon(barcode = result)) // add image parameter
+        startActivity(addIntent)
 
     }
 
