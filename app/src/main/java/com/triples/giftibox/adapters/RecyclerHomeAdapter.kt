@@ -15,7 +15,6 @@ import com.triples.giftibox.adapters.RecyclerCouponAdapter
 
 class RecyclerHomeAdapter(private var homeList: MutableList<Home>): RecyclerView.Adapter<RecyclerHomeAdapter.ListItemViewHolder>() {
 
-
     inner class ListItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!){
         private var textviewRecyclerSubject: TextView = itemView!!.findViewById(R.id.textview_recycler_subject)
         private var recyclerviewRecyclerContent: RecyclerView = itemView!!.findViewById(R.id.recyclerview_recycler_content)
@@ -26,8 +25,7 @@ class RecyclerHomeAdapter(private var homeList: MutableList<Home>): RecyclerView
 
             textviewRecyclerSubject.text = data.getSubject()
 
-            var recyclerCouponAdapter: RecyclerCouponAdapter
-            recyclerCouponAdapter =  RecyclerCouponAdapter(data.getCouponList())
+            var recyclerCouponAdapter =  RecyclerCouponAdapter(data.getCouponList())
             recyclerviewRecyclerContent.layoutManager = LinearLayoutManager(itemView.context,  RecyclerView.HORIZONTAL, false)
             recyclerviewRecyclerContent.adapter = recyclerCouponAdapter
         }

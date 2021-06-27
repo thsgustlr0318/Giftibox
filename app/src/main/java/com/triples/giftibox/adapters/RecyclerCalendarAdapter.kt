@@ -7,14 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.triples.giftibox.CouponActivity
 import com.triples.giftibox.R
 import com.triples.giftibox.data.Coupon
-import com.triples.giftibox.data.Home
-import com.triples.giftibox.adapters.RecyclerCouponAdapter
 import com.triples.giftibox.data.CouponParcel
 
 class RecyclerCalendarAdapter(private var couponList: MutableList<Coupon>): RecyclerView.Adapter<RecyclerCalendarAdapter.ListItemViewHolder>() {

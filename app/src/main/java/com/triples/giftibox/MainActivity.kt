@@ -6,21 +6,15 @@ import android.content.pm.PackageManager
 import android.content.pm.Signature
 import android.graphics.Color
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import android.Manifest
-import android.app.Activity
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.BitmapFactory.decodeFileDescriptor
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.ParcelFileDescriptor
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -32,12 +26,10 @@ import com.google.zxing.MultiFormatReader
 import com.google.zxing.common.HybridBinarizer
 import com.google.zxing.BinaryBitmap
 import com.triples.giftibox.data.Coupon
-import com.triples.giftibox.data.FullCoupon
+import com.triples.giftibox.data.CouponParcel
 import com.triples.giftibox.databinding.ActivityMainBinding
 import java.io.FileDescriptor
 import java.io.IOException
-import java.io.InputStream
-import java.lang.Exception
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -70,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivity", result.toString())
 
         val addIntent: Intent = Intent(this, CouponAddActivity::class.java)
-        addIntent.putExtra("couponData", FullCoupon(barcode = result, img = uri.toString())) // add image parameter
+        addIntent.putExtra("couponData", CouponParcel(barcode = result, img = uri.toString())) // add image parameter
         startActivity(addIntent)
 
     }

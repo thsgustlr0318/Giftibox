@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide
 import com.triples.giftibox.CouponActivity
 import com.triples.giftibox.R
 import com.triples.giftibox.data.Coupon
-import com.triples.giftibox.data.Home
 import com.triples.giftibox.data.CouponParcel
 import java.util.ArrayList
 

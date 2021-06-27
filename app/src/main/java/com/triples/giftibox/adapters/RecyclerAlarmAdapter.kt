@@ -1,19 +1,12 @@
 package com.triples.giftibox.adapters
 
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.triples.giftibox.CouponActivity
 import com.triples.giftibox.R
 import com.triples.giftibox.data.Alarm
-import com.triples.giftibox.data.Coupon
-import com.triples.giftibox.data.CouponParcel
 
 class RecyclerAlarmAdapter(private var alarmlist: MutableList<Alarm>): RecyclerView.Adapter<RecyclerAlarmAdapter.ListItemViewHolder>() {
     inner class ListItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!){
