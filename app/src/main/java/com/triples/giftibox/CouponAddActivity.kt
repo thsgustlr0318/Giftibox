@@ -112,8 +112,10 @@ class CouponAddActivity : AppCompatActivity(){
     }
 
     private fun initData(){
+        Log.d("CouponAddActivity", intent.data.toString())
         if( intent.hasExtra("couponData") ){
             var coupon = intent.getParcelableExtra<FullCoupon>("couponData")
+            Log.d("CouponAddActivity", coupon.toString())
             binding.edittextChangeName.text = Editable.Factory.getInstance().newEditable(coupon?.menu)
             binding.edittextChangeBrand.text = Editable.Factory.getInstance().newEditable(coupon?.brand)
             binding.edittextChangeCategory.text = Editable.Factory.getInstance().newEditable(coupon?.category)

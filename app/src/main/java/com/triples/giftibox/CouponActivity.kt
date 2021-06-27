@@ -84,7 +84,6 @@ class CouponActivity : AppCompatActivity() {
             binding.textviewCouponMemo.text = coupon.memo
             Glide.with(this).load(coupon.img).centerCrop().into(binding.imageviewCouponImg)
             Glide.with(this).load("https://internationalbarcodes.com/wp-content/uploads/sites/95/2013/11/SSCC-Pallet-Barcode.jpg").centerCrop().into(binding.imageviewCouponBarcode)
-
         }
     }
 

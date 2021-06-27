@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivity", result.toString())
 
         val addIntent: Intent = Intent(this, CouponAddActivity::class.java)
-        intent.putExtra("couponData", FullCoupon(barcode = result)) // add image parameter
+        addIntent.putExtra("couponData", FullCoupon(barcode = result, img = uri.toString())) // add image parameter
         startActivity(addIntent)
 
     }
