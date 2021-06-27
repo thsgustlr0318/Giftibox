@@ -14,8 +14,6 @@ import com.triples.giftibox.R
 import com.triples.giftibox.data.Coupon
 import com.triples.giftibox.databinding.CardviewMapBinding
 import com.triples.giftibox.databinding.FragMapBinding
-import kotlinx.android.synthetic.main.cardview_map.view.*
-import kotlinx.android.synthetic.main.frag_map.view.*
 import kotlin.math.log
 
 class RecyclerMapAdapter(private val dataSet: ArrayList<Coupon>, val itemClick: (Coupon)-> Unit) : RecyclerView.Adapter<RecyclerMapAdapter.ViewHolder>() {
@@ -37,7 +35,7 @@ class RecyclerMapAdapter(private val dataSet: ArrayList<Coupon>, val itemClick: 
     }
 
     inner class ViewHolder(view: View, itemClick: (Coupon) -> Unit) : RecyclerView.ViewHolder(view) {
-        private val imageView: ImageView = view.imageView_map
+        private val imageView: ImageView = view.findViewById(R.id.imageView_map)
 
         fun binding(coupon: Coupon) {
             Glide.with(imageView.context)

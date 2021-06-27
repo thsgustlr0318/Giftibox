@@ -33,7 +33,6 @@ import com.google.zxing.common.HybridBinarizer
 import com.google.zxing.BinaryBitmap
 import com.triples.giftibox.data.Coupon
 import com.triples.giftibox.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 import java.io.FileDescriptor
 import java.io.IOException
 import java.io.InputStream
@@ -101,7 +100,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initActionBar(){
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.outline_notifications_24)
         supportActionBar!!.setDisplayShowTitleEnabled(true)
@@ -136,7 +135,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNav.menu.getItem(2).isEnabled = false
 
         binding.fab.setColorFilter(Color.parseColor("#ffffffff"))
-        fab.setOnClickListener{
+        binding.fab.setOnClickListener{
             Log.d("MainActivity","Click fab")
             Toast.makeText(this, "click fab", Toast.LENGTH_SHORT).show()
             selectGallery()

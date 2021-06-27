@@ -20,8 +20,6 @@ import com.triples.giftibox.data.Home
 import com.triples.giftibox.databinding.ActivitySearchBinding
 import com.triples.giftibox.decorator.EventDecorator
 import com.triples.giftibox.decorator.SaturdayDecorator
-import com.triples.giftibox.decorator.SundayDecorator
-import kotlinx.android.synthetic.main.activity_alarm.*
 import java.util.ArrayList
 
 enum class SEARCH_SORT{
@@ -119,7 +117,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener  {
 
 
     private fun initActionBar(){
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.outline_arrow_back_24)
         supportActionBar!!.setDisplayShowTitleEnabled(true)

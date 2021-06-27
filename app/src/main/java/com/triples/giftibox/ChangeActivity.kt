@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.triples.giftibox.data.CouponParcel
 import com.triples.giftibox.databinding.ActivityChangeBinding
-import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.StringBuilder
 import java.util.*
 
@@ -85,7 +84,7 @@ class ChangeActivity : AppCompatActivity(){
     }
 
     private fun initActionBar(){
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowTitleEnabled(true)
     }

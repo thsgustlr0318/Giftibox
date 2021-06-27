@@ -11,7 +11,6 @@ import com.triples.giftibox.adapters.RecyclerHomeAdapter
 import com.triples.giftibox.data.Alarm
 import com.triples.giftibox.data.Home
 import com.triples.giftibox.databinding.ActivityAlarmBinding
-import kotlinx.android.synthetic.main.activity_alarm.*
 
 class AlarmActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlarmBinding
@@ -55,7 +54,7 @@ class AlarmActivity : AppCompatActivity() {
     }
 
     private fun initActionBar(){
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.outline_arrow_back_24)
         supportActionBar!!.setDisplayShowTitleEnabled(true)
