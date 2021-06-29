@@ -23,9 +23,9 @@ class RecyclerHomeAdapter(private var homeList: MutableList<Home>): RecyclerView
             Log.d("RecyclerHomeAdapter", "===== ===== ===== ===== bind ===== ===== ===== =====")
             //coupon_img.setImageResource(R.drawable.ic_launcher_foreground)
 
-            textviewRecyclerSubject.text = data.getSubject()
+            textviewRecyclerSubject.text = data.subject
 
-            var recyclerCouponAdapter =  RecyclerCouponAdapter(data.getCouponList())
+            var recyclerCouponAdapter =  RecyclerCouponAdapter(data.couponList)
             recyclerviewRecyclerContent.layoutManager = LinearLayoutManager(itemView.context,  RecyclerView.HORIZONTAL, false)
             recyclerviewRecyclerContent.adapter = recyclerCouponAdapter
         }

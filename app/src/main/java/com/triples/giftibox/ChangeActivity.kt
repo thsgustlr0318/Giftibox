@@ -30,13 +30,14 @@ class ChangeActivity : AppCompatActivity(){
     }
 
     private fun initClickListener() {
-        var datePickerView = findViewById<EditText>(R.id.edittext_change_date)
-        var categoryView = findViewById<EditText>(R.id.edittext_change_category)
-        datePickerView.setOnClickListener {
+        binding.edittextChangeDate.setOnClickListener {
             showDatePicker()
         }
-        categoryView.setOnClickListener {
+        binding.edittextChangeCategory.setOnClickListener {
             showCategoryList()
+        }
+        binding.buttonChangeCancel.setOnClickListener{
+            onBackPressed()
         }
     }
 
@@ -63,18 +64,17 @@ class ChangeActivity : AppCompatActivity(){
         }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE)).show()
     }
 
-    private fun getDateFromYMD(y: Int, m: Int, d: Int): String {
-        var sb : StringBuilder = StringBuilder()
-        sb.append(y.toString()+".")
-        if(m+1 < 10)
-            sb.append("0"+(m+1).toString()+".")
-        else
-            sb.append((m+1).toString()+".")
-        if(d < 10)
-            sb.append("0"+d.toString())
-        else
-            sb.append(d.toString())
-        return sb.toString()
+    private fun getDateFromYMD(y: Int, m: Int, d: Int) = with(StringBuilder()){
+        append(y)
+        append(".")
+        if( m+1 < 10 )
+            append("0")
+        append(m+1)
+        append(".")
+        if( d < 10 )
+            append("0")
+        append(d)
+        toString()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

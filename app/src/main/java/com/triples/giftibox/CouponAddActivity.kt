@@ -30,13 +30,14 @@ class CouponAddActivity : AppCompatActivity(){
     }
 
     private fun initClickListener() {
-        var datePickerView = findViewById<EditText>(R.id.edittext_change_date)
-        var categoryView = findViewById<EditText>(R.id.edittext_change_category)
-        datePickerView.setOnClickListener {
+        binding.edittextChangeDate.setOnClickListener {
             showDatePicker()
         }
-        categoryView.setOnClickListener {
+        binding.edittextChangeCategory.setOnClickListener {
             showCategoryList()
+        }
+        binding.buttonChangeCancel.setOnClickListener{
+            onBackPressed()
         }
     }
 

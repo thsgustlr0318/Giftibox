@@ -18,8 +18,8 @@ class RecyclerAlarmAdapter(private var alarmlist: MutableList<Alarm>): RecyclerV
         fun bind(data: Alarm, position: Int){
             //coupon_img.setImageResource(R.drawable.ic_launcher_foreground)
             //Glide.with(itemView).load(data.getImg()).centerCrop().into(imageviewCardImg)
-            textViewAlarmTitle.text = data.getTitle()
-            textviewAlarmContent.text = data.getContent()
+            textViewAlarmTitle.text = data.title
+            textviewAlarmContent.text = data.content
 
         }
     }

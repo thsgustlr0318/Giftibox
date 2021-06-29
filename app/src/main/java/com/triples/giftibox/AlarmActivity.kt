@@ -46,8 +46,8 @@ class AlarmActivity : AppCompatActivity() {
         var retList : ArrayList<Alarm> = ArrayList<Alarm>()
 
         retList = arrayListOf(
-            Alarm("카페베네 카페라떼","7일 남았다"),
-            Alarm("싸피레이스","열흘 남았다")
+            Alarm(title="카페베네 카페라떼",content="7일 남았다"),
+            Alarm(title="싸피레이스",content="열흘 남았다")
         )
 
         return retList
