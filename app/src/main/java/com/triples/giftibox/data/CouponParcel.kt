@@ -1,43 +1,16 @@
 package com.triples.giftibox.data
 
-import android.os.Parcel
 import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-class CouponParcel(var menu:String?, var img:String?, var barcode:String?, var brand:String?, var date:String?, var category:String?, var register: String?, var memo: String?) : Parcelable {
-    constructor(parcel: Parcel) : this(
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString()
-    ) {
-    }
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(menu)
-        parcel.writeString(img)
-        parcel.writeString(barcode)
-        parcel.writeString(brand)
-        parcel.writeString(date)
-        parcel.writeString(category)
-        parcel.writeString(register)
-        parcel.writeString(memo)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<CouponParcel> {
-        override fun createFromParcel(parcel: Parcel): CouponParcel {
-            return CouponParcel(parcel)
-        }
-
-        override fun newArray(size: Int): Array<CouponParcel?> {
-            return arrayOfNulls(size)
-        }
-    }
-}
+@Parcelize
+data class CouponParcel (
+    var menu: String = "메뉴를 입력해주세요.",
+    var img: String = "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg",
+    var barcode: String = "바코드가 인식되지 않았습니다.",
+    var brand: String = "브랜드를 입력해주세요.",
+    var date: String = "유효기한을 입력해주세요.",
+    var category: String = "기타",
+    var register: String = "오늘 날짜 넣기",
+    var memo: String = ""
+) : Parcelable

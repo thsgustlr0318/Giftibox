@@ -11,7 +11,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.triples.giftibox.data.CouponParcel
-import com.triples.giftibox.data.FullCoupon
 import com.triples.giftibox.databinding.ActivityChangeBinding
 import java.lang.StringBuilder
 import java.util.*
@@ -112,8 +111,10 @@ class CouponAddActivity : AppCompatActivity(){
     }
 
     private fun initData(){
+        Log.d("CouponAddActivity", intent.data.toString())
         if( intent.hasExtra("couponData") ){
-            var coupon = intent.getParcelableExtra<FullCoupon>("couponData")
+            var coupon = intent.getParcelableExtra<CouponParcel>("couponData")
+            Log.d("CouponAddActivity", coupon.toString())
             binding.edittextChangeName.text = Editable.Factory.getInstance().newEditable(coupon?.menu)
             binding.edittextChangeBrand.text = Editable.Factory.getInstance().newEditable(coupon?.brand)
             binding.edittextChangeCategory.text = Editable.Factory.getInstance().newEditable(coupon?.category)
