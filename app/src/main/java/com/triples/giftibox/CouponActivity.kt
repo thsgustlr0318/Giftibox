@@ -13,13 +13,14 @@ import com.triples.giftibox.databinding.ActivityCouponBinding
 
 class CouponActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCouponBinding
-
+    private lateinit var coupon: CouponParcel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.e("CouponActivity", "Create")
         initBinding()
         initData()
         initActionBar()
+        initListener()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -32,6 +33,14 @@ class CouponActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.outline_delete_24)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
+    }
+
+    private fun initListener(){
+        binding.imageviewCouponImg.setOnClickListener{
+            val nextIntent = Intent(this, ImageActivity::class.java)
+            nextIntent.putExtra("couponImage", coupon.img)
+            this.startActivity(nextIntent)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -73,8 +82,8 @@ class CouponActivity : AppCompatActivity() {
 
     private fun initData(){
         if( intent.hasExtra("couponData") ){
-            var coupon = intent.getParcelableExtra<CouponParcel>("couponData")
-            binding.textviewCouponMenu.text = coupon!!.menu
+            coupon = intent.getParcelableExtra<CouponParcel>("couponData")!!
+            binding.textviewCouponMenu.text = coupon.menu
             binding.textviewCouponBrand.text = coupon.brand
             binding.textviewCouponCategory.text = coupon.category
             binding.textviewCouponDate.text = coupon.date

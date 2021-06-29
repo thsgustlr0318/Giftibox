@@ -57,6 +57,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ImageActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.CHANGE" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <!-- 카카오api 키 설정 -->
         <meta-data android:name="com.kakao.sdk.AppKey" android:value="dafb51673682d6c63ed5fcd606bd6344"/>
