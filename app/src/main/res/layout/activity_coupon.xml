@@ -66,135 +66,144 @@
             android:layout_marginBottom="10dp"
             />
 
-        <ImageView
-            android:id="@+id/imageview_coupon_barcode"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="101dp"
-            tools:srcCompat="@tools:sample/avatars"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="40dp"
+            android:scrollbars="none"
             >
 
-            <TextView
-                android:id="@+id/textview_coupon_brandlabel"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:text="브랜드"
-                android:textStyle="bold" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textview_coupon_brand"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="textview_coupon_brand" />
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/imageview_coupon_barcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="101dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textview_coupon_datelabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:text="유효기간"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/textview_coupon_datelabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="유효기간"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textview_coupon_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="textview_coupon_date" />
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/textview_coupon_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="textview_coupon_date" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textview_coupon_categorylabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:text="카테고리"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/textview_coupon_brandlabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="브랜드"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textview_coupon_category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="textview_coupon_category" />
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/textview_coupon_brand"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="textview_coupon_brand" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textview_coupon_registerlabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:text="등록일"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/textview_coupon_categorylabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="카테고리"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textview_coupon_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="textview_coupon_register" />
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/textview_coupon_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="textview_coupon_category" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textview_coupon_memolabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:text="메모"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/textview_coupon_registerlabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="등록일"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textview_coupon_memo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="textview_coupon_memo" />
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/textview_coupon_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="textview_coupon_register" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textview_coupon_memolabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="메모"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textview_coupon_memo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="textview_coupon_memo" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 

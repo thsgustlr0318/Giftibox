@@ -40,7 +40,7 @@ class RecyclerCouponAdapter(private var couponList: MutableList<Coupon>): Recycl
             itemView.setOnClickListener{
 
                 var couponData = CouponParcel(data.menu, data.img, "barcode", data.brand,
-                data.date, "치킨", "2021.06.15", "소연이가 사줌")
+                data.date, "치킨", "2021.06.15", "소연이가 사줌dafsfsfsfsfasdfsafsfasfdasfasfasfsfasfsafsfsfsfsfsfsfsdf")
                 val nextIntent = Intent(itemView.context, CouponActivity::class.java)
                 nextIntent.putExtra("couponData", couponData)
                 itemView.context.startActivity(nextIntent)
