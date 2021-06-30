@@ -6,11 +6,10 @@ import android.text.Editable
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.triples.giftibox.data.CouponParcel
+import com.triples.giftibox.data.Coupon
 import com.triples.giftibox.databinding.ActivityChangeBinding
 import java.lang.StringBuilder
 import java.util.*
@@ -113,7 +112,7 @@ class ChangeActivity : AppCompatActivity(){
 
     private fun initData(){
         if( intent.hasExtra("couponData") ){
-            var coupon = intent.getParcelableExtra<CouponParcel>("couponData")
+            var coupon = intent.getParcelableExtra<Coupon>("couponData")
             binding.edittextChangeName.text = Editable.Factory.getInstance().newEditable(coupon?.menu)
             binding.edittextChangeBrand.text = Editable.Factory.getInstance().newEditable(coupon?.brand)
             binding.edittextChangeCategory.text = Editable.Factory.getInstance().newEditable(coupon?.category)

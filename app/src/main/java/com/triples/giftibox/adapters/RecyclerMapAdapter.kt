@@ -1,20 +1,14 @@
 package com.triples.giftibox.adapters
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.triples.giftibox.MapFrag
 import com.triples.giftibox.R
 import com.triples.giftibox.data.Coupon
 import com.triples.giftibox.databinding.CardviewMapBinding
-import com.triples.giftibox.databinding.FragMapBinding
-import kotlin.math.log
 
 class RecyclerMapAdapter(private val dataSet: ArrayList<Coupon>, val itemClick: (Coupon)-> Unit) : RecyclerView.Adapter<RecyclerMapAdapter.ViewHolder>() {
 

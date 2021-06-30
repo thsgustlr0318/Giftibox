@@ -25,8 +25,8 @@ import com.google.zxing.RGBLuminanceSource
 import com.google.zxing.MultiFormatReader
 import com.google.zxing.common.HybridBinarizer
 import com.google.zxing.BinaryBitmap
+import com.triples.giftibox.Util.CouponDB
 import com.triples.giftibox.data.Coupon
-import com.triples.giftibox.data.CouponParcel
 import com.triples.giftibox.databinding.ActivityMainBinding
 import java.io.FileDescriptor
 import java.io.IOException
@@ -35,9 +35,12 @@ import java.security.NoSuchAlgorithmException
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private var catList = listOf<Coupon>()
 
     private val MAIN_REQUEST_CODE = 100
     private val MAIN_CAMERA_REQUEST_CODE = 0
+
+    private var couponDb : CouponDB? = null
 
     @Throws(IOException::class)
     private fun getBitmapFromUri(uri: Uri): Bitmap {
@@ -62,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivity", result.toString())
 
         val addIntent: Intent = Intent(this, CouponAddActivity::class.java)
-        addIntent.putExtra("couponData", CouponParcel(barcode = result, img = uri.toString())) // add image parameter
+        addIntent.putExtra("couponData", Coupon(barcode = result, img = uri.toString())) // add image parameter
         startActivity(addIntent)
 
     }
@@ -76,16 +79,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.e("MainActivity", "Create")
-        /*
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(
-            R.id.homeFrag,
-            HomeFrag()
-        )
-        transaction.commit()
-        intent.putExtra("CouponList", CouponList)
-        */
         initBinding()
+        initDB()
         getHashKey()
         initActionBar()
         initNavigation()
@@ -94,6 +89,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.top_main_actionbar, menu)		//작성한 메뉴파일 설정
         return true
+    }
+
+    private fun initDB(){
+        couponDb = CouponDB.getInstance(this)
+
+        val r = Runnable {
+
+
+        }
+
+        val thread = Thread(r)
+        thread.start()
     }
 
     private fun initActionBar(){

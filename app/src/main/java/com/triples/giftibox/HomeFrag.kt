@@ -10,12 +10,10 @@ import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
-import com.triples.giftibox.adapters.RecyclerCouponAdapter
 import com.triples.giftibox.adapters.RecyclerHomeAdapter
 import com.triples.giftibox.data.Coupon
 import com.triples.giftibox.data.Home
 import com.triples.giftibox.databinding.FragHomeBinding
-import com.triples.giftibox.databinding.FragMapBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

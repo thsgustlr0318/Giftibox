@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide
 import com.triples.giftibox.CouponActivity
 import com.triples.giftibox.R
 import com.triples.giftibox.data.Coupon
-import com.triples.giftibox.data.CouponParcel
 import java.util.ArrayList
 
 class RecyclerSearchAdapter(private var couponList: ArrayList<Coupon>): RecyclerView.Adapter<RecyclerSearchAdapter.ListItemViewHolder>(), Filterable  {
@@ -37,7 +36,7 @@ class RecyclerSearchAdapter(private var couponList: ArrayList<Coupon>): Recycler
             textviewCardDate.text = data.date
             itemView.setOnClickListener{
 
-                var couponData = CouponParcel(data.menu, data.img, "barcode", data.brand,
+                var couponData = Coupon(data.menu, data.img, "barcode", data.brand,
                     data.date, "치킨", "2021.06.15", "소연이가 사줌")
                 val nextIntent = Intent(itemView.context, CouponActivity::class.java)
                 nextIntent.putExtra("couponData", couponData)

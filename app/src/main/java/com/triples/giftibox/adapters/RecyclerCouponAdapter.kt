@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide
 import com.triples.giftibox.CouponActivity
 import com.triples.giftibox.R
 import com.triples.giftibox.data.Coupon
-import com.triples.giftibox.data.CouponParcel
 
 class RecyclerCouponAdapter(private var couponList: MutableList<Coupon>): RecyclerView.Adapter<RecyclerCouponAdapter.ListItemViewHolder>() {
 
@@ -32,7 +31,7 @@ class RecyclerCouponAdapter(private var couponList: MutableList<Coupon>): Recycl
             textviewCardDate.text = data.date
             itemView.setOnClickListener{
 
-                var couponData = CouponParcel(data.menu, data.img, "barcode", data.brand,
+                var couponData = Coupon(data.menu, data.img, "barcode", data.brand,
                 data.date, "치킨", "2021.06.15", "소연이가 사줌dafsfsfsfsfasdfsafsfasfdasfasfasfsfasfsafsfsfsfsfsfsfsdf")
                 val nextIntent = Intent(itemView.context, CouponActivity::class.java)
                 nextIntent.putExtra("couponData", couponData)

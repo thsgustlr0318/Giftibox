@@ -7,11 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.triples.giftibox.R
-import com.triples.giftibox.data.Coupon
 import com.triples.giftibox.data.Home
-import com.triples.giftibox.adapters.RecyclerCouponAdapter
 
 class RecyclerHomeAdapter(private var homeList: MutableList<Home>): RecyclerView.Adapter<RecyclerHomeAdapter.ListItemViewHolder>() {
 

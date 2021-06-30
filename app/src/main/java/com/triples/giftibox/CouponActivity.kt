@@ -8,12 +8,12 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.triples.giftibox.data.CouponParcel
+import com.triples.giftibox.data.Coupon
 import com.triples.giftibox.databinding.ActivityCouponBinding
 
 class CouponActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCouponBinding
-    private lateinit var coupon: CouponParcel
+    private lateinit var coupon: Coupon
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.e("CouponActivity", "Create")
@@ -69,7 +69,7 @@ class CouponActivity : AppCompatActivity() {
     private fun writeCoupon(): Boolean{
         Log.d("CouponActivity", "수정시작")
         val nextIntent = Intent(this, ChangeActivity::class.java)
-        var coupon = intent.getParcelableExtra<CouponParcel>("couponData")
+        var coupon = intent.getParcelableExtra<Coupon>("couponData")
         nextIntent.putExtra("couponData", coupon)
         this.startActivity(nextIntent)
         return true
@@ -82,7 +82,7 @@ class CouponActivity : AppCompatActivity() {
 
     private fun initData(){
         if( intent.hasExtra("couponData") ){
-            coupon = intent.getParcelableExtra<CouponParcel>("couponData")!!
+            coupon = intent.getParcelableExtra<Coupon>("couponData")!!
             binding.textviewCouponMenu.text = coupon.menu
             binding.textviewCouponBrand.text = coupon.brand
             binding.textviewCouponCategory.text = coupon.category

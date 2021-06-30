@@ -1,7 +1,6 @@
 package com.triples.giftibox
 
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -13,13 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.triples.giftibox.adapters.RecyclerSearchAdapter
 import com.triples.giftibox.data.Coupon
-import com.triples.giftibox.data.Home
 import com.triples.giftibox.databinding.ActivitySearchBinding
-import com.triples.giftibox.decorator.EventDecorator
-import com.triples.giftibox.decorator.SaturdayDecorator
 import java.util.ArrayList
 
 enum class SEARCH_SORT{
