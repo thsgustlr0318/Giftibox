@@ -4,11 +4,7 @@
 
 ## 🔨 Todo
 
-아키텍처 선정
-쿠폰 등록(바코드 스캔, api)
-DB 설계
-settings ui
-상단바
+바코드 이미지로 변환, DB 테스트
 
 ## 📑 Schedule
 
